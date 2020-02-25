@@ -34,6 +34,7 @@ class DetailVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, 
     @IBOutlet weak var languagesField: UITextField!
     @IBOutlet weak var teamField: UITextField!
   
+    @IBOutlet weak var emailField: UITextField!
     
     @IBOutlet weak var cameraImageView: UIImageView!
     // ImageView
@@ -44,10 +45,10 @@ class DetailVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, 
     @IBOutlet weak var btnEdit: UIButton!
     
     var person: DukePerson?
-    var addPage: Bool?
-    var editTextFieldToggle: Bool = false
+    var addPage: Bool!
+    var editTextFieldToggle: Bool!
+    var isEditMode:Bool!
     var textFields: [UITextField]!
-    var isEditMode = false
     var teamList = ["","Reality Kit", "UI Builder", "WizeView", "First Year", "Reflux", "HFTP", "Newsstand", "Student", "Professor"]
     var degreeList = ["MS", "MEng", "BA", "BS", "PhD", "MBA"]
     var roleList = ["Student", "TA",  "Professor"]
@@ -64,7 +65,7 @@ class DetailVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, 
         self.setupHideKeyboardOnTap()
         imagePickerController.delegate = self
         loadPickers()
-        textFields = [firstNameField, lastNameField, roleField, genderField, fromField, degreeField, hobbiesField, languagesField, teamField]
+        textFields = [firstNameField, lastNameField, roleField, genderField, fromField, degreeField, hobbiesField, languagesField, teamField, emailField]
         setEditing(isEditMode, animated: true)
         setUI(edit: editTextFieldToggle)
        
@@ -186,6 +187,13 @@ class DetailVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, 
         btnEdit.clipsToBounds = true
         btnEdit.backgroundColor = twitterBlue
         btnEdit.addTarget(self, action: #selector(toogleEditor), for: .touchUpInside)
+        if(addPage) {
+            btnEdit.setTitle("Save", for: UIControl.State.normal)
+        }
+        else{
+           btnEdit.setTitle("Edit", for: UIControl.State.normal)
+        }
+        
         cameraImageView.tintColor = twitterBlue
     }
     
@@ -260,6 +268,7 @@ class DetailVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, 
         let languages: String = printArray(strs: person?.languages ?? [] )
         languagesField.text = languages
         teamField.text = person?.team
+        emailField.text = person?.email
         if person != nil {
             personImageView.image = person?.picture
         }
@@ -342,7 +351,7 @@ class DetailVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, 
         if team.isEmpty {
             team = roleField.text!
         }
-        
+        let email:String = emailField.text!
         /// if person exists, update information
         for dukeperson in dukePersons {
             if dukeperson.firstName == firstName && dukeperson.lastName == lastName {
@@ -353,13 +362,14 @@ class DetailVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, 
                 dukeperson.degree = degree
                 dukeperson.languages = languages
                 dukeperson.team = team
+                dukeperson.email = email
                 dukeperson.picture = personImageView.image ?? UIImage(imageLiteralResourceName: "logo")
                 sections = updateSections()
                 createAlert(title: "DONE!", message: "\(firstName) \(lastName) is found! Personal Information has beed updated.")
                 return true
             }
         }
-        let newPerson: DukePerson = DukePerson(firstName: firstName, lastName: lastName, whereFrom: from, gender: gender, hobbies: hobbies, role: role, degree: degree , languages: languages, picture: personImageView.image ?? UIImage(imageLiteralResourceName: "logo"), team: team, netid: "", email: "", department: "", id: "", nextPage: "no")
+        let newPerson: DukePerson = DukePerson(firstName: firstName, lastName: lastName, whereFrom: from, gender: gender, hobbies: hobbies, role: role, degree: degree , languages: languages, picture: personImageView.image ?? UIImage(imageLiteralResourceName: "logo"), team: team, netid: "", email: email, department: "", id: "", nextPage: "no")
         
         dukePersons.append(newPerson)
         sections = updateSections()
