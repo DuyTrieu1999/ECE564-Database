@@ -18,10 +18,14 @@ class PageVC: UIPageViewController, UIPageViewControllerDataSource, UIPageViewCo
         let destVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailVC") as! DetailVC
         destVC.person = person
         destVC.addPage = addPage
-        let yogoCV = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "YogoVC") as! YogoVC
+        let yogoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "YogoVC") as! YogoVC
+        let worldVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WorldVC") as! WorldVC
         var subVC: [UIViewController] = [destVC]
         if person?.nextPage == "Reading" {
-            subVC.append(yogoCV)
+            subVC.append(yogoVC)
+        }
+        else if person?.nextPage == "world" {
+            subVC.append(worldVC)
         }
            return subVC
        }()
