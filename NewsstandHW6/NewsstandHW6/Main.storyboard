@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LpT-00-ayt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LpT-00-ayt">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -538,9 +538,36 @@
             </objects>
             <point key="canvasLocation" x="1000" y="-650"/>
         </scene>
+        <!--QiruiVC-->
+        <scene sceneID="rii-9f-ezW">
+            <objects>
+                <viewController storyboardIdentifier="QiruiVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="V6u-Zu-zx7" customClass="QiruiVC" customModule="NewsstandHW6" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PKI-Ya-FGN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="laker" translatesAutoresizingMaskIntoConstraints="NO" id="mEO-0o-vLD">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="oAF-ie-sIo" firstAttribute="bottom" secondItem="mEO-0o-vLD" secondAttribute="bottom" id="5pS-fW-NYX"/>
+                            <constraint firstItem="mEO-0o-vLD" firstAttribute="top" secondItem="oAF-ie-sIo" secondAttribute="top" id="Qix-HP-g1L"/>
+                            <constraint firstItem="mEO-0o-vLD" firstAttribute="leading" secondItem="oAF-ie-sIo" secondAttribute="leading" id="aje-t8-0DJ"/>
+                            <constraint firstItem="oAF-ie-sIo" firstAttribute="trailing" secondItem="mEO-0o-vLD" secondAttribute="trailing" id="ipx-7k-jSB"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="oAF-ie-sIo"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R5P-9k-RrL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1696" y="-650"/>
+        </scene>
     </scenes>
     <resources>
         <image name="camera.fill" catalog="system" width="64" height="48"/>
+        <image name="laker" width="640" height="1136"/>
         <image name="logo" width="700" height="700"/>
         <image name="play.circle" catalog="system" width="64" height="60"/>
     </resources>

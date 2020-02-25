@@ -22,6 +22,7 @@
 		3F4B024A2404CDE500522447 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F4B02492404CDE400522447 /* Main.storyboard */; };
 		3F4B024E2404CEB300522447 /* WorldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4B024C2404CEB200522447 /* WorldView.swift */; };
 		3F4B024F2404CEB300522447 /* WorldVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4B024D2404CEB300522447 /* WorldVC.swift */; };
+		D05F9A842405DA0E00378E6B /* QiruiVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05F9A832405DA0E00378E6B /* QiruiVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		3F4B02492404CDE400522447 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		3F4B024C2404CEB200522447 /* WorldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldView.swift; sourceTree = "<group>"; };
 		3F4B024D2404CEB300522447 /* WorldVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldVC.swift; sourceTree = "<group>"; };
+		D05F9A832405DA0E00378E6B /* QiruiVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiruiVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 				3F4B024D2404CEB300522447 /* WorldVC.swift */,
 				3F4B024C2404CEB200522447 /* WorldView.swift */,
 				3F4B02402404CD0B00522447 /* YogoVC.swift */,
+				D05F9A832405DA0E00378E6B /* QiruiVC.swift */,
 			);
 			path = animation;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 				3F4B02422404CD0B00522447 /* PageVC.swift in Sources */,
 				3F4B02452404CD0B00522447 /* DetailVC.swift in Sources */,
 				3F4B02392404CCFA00522447 /* DataGroup.swift in Sources */,
+				D05F9A842405DA0E00378E6B /* QiruiVC.swift in Sources */,
 				3F4B02212404CC0800522447 /* AppDelegate.swift in Sources */,
 				3F4B024F2404CEB300522447 /* WorldVC.swift in Sources */,
 				3F4B02232404CC0800522447 /* SceneDelegate.swift in Sources */,
