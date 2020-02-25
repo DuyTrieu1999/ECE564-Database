@@ -12,12 +12,15 @@ class PageVC: UIPageViewController, UIPageViewControllerDataSource, UIPageViewCo
 
     
     var person: DukePerson?
-    var addPage: Bool?
-    
+    var addPage: Bool!
+    var editTextFieldToggle: Bool = false
+    var isEditMode: Bool = false
     lazy var subViewControllers: [UIViewController] = {
         let destVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailVC") as! DetailVC
         destVC.person = person
         destVC.addPage = addPage
+        destVC.editTextFieldToggle = editTextFieldToggle
+        destVC.isEditMode = isEditMode
         let yogoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "YogoVC") as! YogoVC
         let worldVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WorldVC") as! WorldVC
         var subVC: [UIViewController] = [destVC]

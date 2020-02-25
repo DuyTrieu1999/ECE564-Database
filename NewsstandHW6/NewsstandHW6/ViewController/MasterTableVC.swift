@@ -40,9 +40,10 @@ class MasterTableVC: UITableViewController {
             destCV.addPage = false
         }
         if segue.identifier == "addPerson" {
-            let destCV = segue.destination as! addPersonVC
+            let destCV = segue.destination as! PageVC
             destCV.person = sender as? DukePerson
             destCV.addPage = true
+            destCV.isEditMode = true
             destCV.editTextFieldToggle = true
         }
        
