@@ -23,12 +23,16 @@ class PageVC: UIPageViewController, UIPageViewControllerDataSource, UIPageViewCo
         destVC.isEditMode = isEditMode
         let yogoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "YogoVC") as! YogoVC
         let worldVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WorldVC") as! WorldVC
+        let swimmingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SwimmingVC") as! SwimmingVC
         var subVC: [UIViewController] = [destVC]
         if person?.nextPage == "Reading" {
             subVC.append(yogoVC)
         }
         else if person?.nextPage == "world" {
             subVC.append(worldVC)
+        }
+        else if person?.nextPage == "Swimming" {
+            subVC.append(swimmingVC)
         }
            return subVC
        }()

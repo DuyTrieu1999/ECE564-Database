@@ -15,7 +15,7 @@
 
 import UIKit
 
-class SwimmingVC: UIView {
+class SwimmingView: UIView {
 
     /*
     // Only override draw() if you perform custom drawing.
