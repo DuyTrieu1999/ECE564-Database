@@ -25,6 +25,7 @@
 		C8FAEAF42405E26A00503293 /* shibauthframework2019.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8FAEAE92405DA3F00503293 /* shibauthframework2019.framework */; };
 		C8FAEAF52405E26A00503293 /* shibauthframework2019.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C8FAEAE92405DA3F00503293 /* shibauthframework2019.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C8FAEAF72405E34E00503293 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FAEAF62405E34E00503293 /* LogInViewController.swift */; };
+		C8FAEAFB2405E93B00503293 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FAEAFA2405E93B00503293 /* StartViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -61,6 +62,7 @@
 		3F4B024D2404CEB300522447 /* WorldVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldVC.swift; sourceTree = "<group>"; };
 		C8FAEAE92405DA3F00503293 /* shibauthframework2019.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = shibauthframework2019.framework; sourceTree = "<group>"; };
 		C8FAEAF62405E34E00503293 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogInViewController.swift; path = ../../../../../ece564_homework/ECE564_HOMEWORK/LogInViewController.swift; sourceTree = "<group>"; };
+		C8FAEAFA2405E93B00503293 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 				3F4B023C2404CD0A00522447 /* PageVC.swift */,
 				3F4B023D2404CD0A00522447 /* personTableCell.swift */,
 				C8FAEAF62405E34E00503293 /* LogInViewController.swift */,
+				C8FAEAFA2405E93B00503293 /* StartViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -237,6 +240,7 @@
 				3F4B02452404CD0B00522447 /* DetailVC.swift in Sources */,
 				3F4B02392404CCFA00522447 /* DataGroup.swift in Sources */,
 				3F4B02212404CC0800522447 /* AppDelegate.swift in Sources */,
+				C8FAEAFB2405E93B00503293 /* StartViewController.swift in Sources */,
 				C8FAEAF72405E34E00503293 /* LogInViewController.swift in Sources */,
 				3F4B024F2404CEB300522447 /* WorldVC.swift in Sources */,
 				3F4B02232404CC0800522447 /* SceneDelegate.swift in Sources */,
