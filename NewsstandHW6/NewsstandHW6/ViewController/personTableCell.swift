@@ -21,7 +21,10 @@ class personTableCell: UITableViewCell {
         
         personSummary.lineBreakMode = .byWordWrapping
         personSummary.numberOfLines = 0
+        let favoriteImg : UIImage = UIImage(named: "heart_blue")!
+        favouriteImageView.image = favoriteImg
         favouriteImageView.clipsToBounds = true
+        favouriteImageView.contentMode = .scaleAspectFit
        }
     
     func setPerson(person: DukePerson) {
@@ -36,6 +39,7 @@ class personTableCell: UITableViewCell {
         else {
             playImageView.isHidden = false
         }
+        favouriteImageView.isHidden = !person_found.isFavourite
         personSummary.text = description
        }
 }

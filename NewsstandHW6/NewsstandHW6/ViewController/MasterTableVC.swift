@@ -178,6 +178,29 @@ class MasterTableVC: UITableViewController {
           return action
       }
     
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let favourite = displayFavourite(at: indexPath)
+        return UISwipeActionsConfiguration(actions: [favourite])
+    }
+    func displayFavourite(at indexPath: IndexPath) -> UIContextualAction{
+          if self.searching {
+              let personFavourite: DukePerson = self.searchSections[indexPath.section].personList[indexPath.row]
+              let isFavouriteTitle = personFavourite.isFavourite ? "UnFavourite" : "Favourite"
+              let favouriteAction = UIContextualAction(style: .normal, title: isFavouriteTitle) { (action, view, completion) in
+                  personFavourite.isFavourite.toggle()
+              }
+              return favouriteAction
+          }
+          else {
+              let personFavourite: DukePerson = sections[indexPath.section].personList[indexPath.row]
+              let isFavouriteTitle = personFavourite.isFavourite ? "UnFavourite" : "Favourite"
+              let favouriteAction = UIContextualAction(style: .normal, title: isFavouriteTitle) { (action, view, completion) in
+                  personFavourite.isFavourite.toggle()
+              }
+              return favouriteAction
+          }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         sections = updateSections()

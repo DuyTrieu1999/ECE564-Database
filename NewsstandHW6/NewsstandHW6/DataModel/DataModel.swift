@@ -31,6 +31,7 @@ class Person: Codable {
     var whereFrom = "Anywhere"  // this is just a free String - can be city, state, both, etc.
     var gender : Gender = .Male
     var nextPage: String = "no"
+    var isFavourite = false
     
     private enum CodingKeys: String, CodingKey{
         case firstName, lastName, whereFrom, gender, nextPage
