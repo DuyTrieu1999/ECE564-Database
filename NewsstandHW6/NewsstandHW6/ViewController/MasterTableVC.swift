@@ -188,6 +188,9 @@ class MasterTableVC: UITableViewController {
               let isFavouriteTitle = personFavourite.isFavourite ? "UnFavourite" : "Favourite"
               let favouriteAction = UIContextualAction(style: .normal, title: isFavouriteTitle) { (action, view, completion) in
                   personFavourite.isFavourite.toggle()
+                let cell = self.tableView.cellForRow(at: indexPath) as! personTableCell
+                self.searchSections[indexPath.section].personList[indexPath.row] = personFavourite
+                cell.setPerson(person: personFavourite)
               }
               return favouriteAction
           }
@@ -196,6 +199,9 @@ class MasterTableVC: UITableViewController {
               let isFavouriteTitle = personFavourite.isFavourite ? "UnFavourite" : "Favourite"
               let favouriteAction = UIContextualAction(style: .normal, title: isFavouriteTitle) { (action, view, completion) in
                   personFavourite.isFavourite.toggle()
+                let cell = self.tableView.cellForRow(at: indexPath) as! personTableCell
+                sections[indexPath.section].personList[indexPath.row] = personFavourite
+                cell.setPerson(person: personFavourite)
               }
               return favouriteAction
           }
