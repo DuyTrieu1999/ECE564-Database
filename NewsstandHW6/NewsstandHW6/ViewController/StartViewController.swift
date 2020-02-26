@@ -14,15 +14,16 @@ class StartViewController: UIViewController {
     @IBOutlet var LogoImg: UIImageView!
         
     @IBOutlet var LogInButton: UIButton!
+    let twitterBlue: UIColor = UIColor(red: 29.0/255.0, green: 161.0/255.0, blue: 242.0/255.0, alpha: 1.0)
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        LogInButton.backgroundColor = twitterBlue
         setUpView()
     }
     func setUpView() {
-        LogoImg.image = UIImage(named: "AppIcon")
-        self.view.backgroundColor = UIColorFromHex(rgbValue: 0x012169,alpha: 1)
+        LogoImg.image = UIImage(imageLiteralResourceName: "Duke_logo")
+        self.view.backgroundColor = .white
         self.LogInButton.addTarget(self, action: #selector(logIn), for: .touchUpInside)
     }
     func UIColorFromHex(rgbValue:UInt32, alpha:Double=1.0)->UIColor {
