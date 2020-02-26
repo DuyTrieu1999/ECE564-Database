@@ -126,8 +126,14 @@ class MasterTableVC: UITableViewController {
       
       func editAction(at indexPath: IndexPath) -> UIContextualAction{
           let action = UIContextualAction(style: .normal, title: "Edit") { (action, view, completion) in
+            if self.searching {
+                let personEdit: DukePerson = self.searchSections[indexPath.section].personList[indexPath.row]
+                self.performSegue(withIdentifier: "MasterToDetail", sender: personEdit)
+            }
+            else{
               let personEdit: DukePerson = sections[indexPath.section].personList[indexPath.row]
               self.performSegue(withIdentifier: "MasterToDetail", sender: personEdit)
+            }
           }
           action.backgroundColor = .white
           action.image = UIImage(imageLiteralResourceName: "edit_icon").resized(toWidth: 40.0)
