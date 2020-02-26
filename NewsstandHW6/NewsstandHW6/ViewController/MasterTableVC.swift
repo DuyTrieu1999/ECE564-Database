@@ -38,11 +38,20 @@ class MasterTableVC: UITableViewController {
             let destCV = segue.destination as! PageVC
             destCV.person = sender as? DukePerson
             destCV.addPage = false
+            destCV.isEditMode = false
+            destCV.editTextFieldToggle = false
         }
         if segue.identifier == "addPerson" {
             let destCV = segue.destination as! PageVC
             destCV.person = sender as? DukePerson
             destCV.addPage = true
+            destCV.isEditMode = true
+            destCV.editTextFieldToggle = true
+        }
+        if segue.identifier == "MasterToDetail_Edit" {
+            let destCV = segue.destination as! PageVC
+            destCV.person = sender as? DukePerson
+            destCV.addPage = false
             destCV.isEditMode = true
             destCV.editTextFieldToggle = true
         }
@@ -128,11 +137,11 @@ class MasterTableVC: UITableViewController {
           let action = UIContextualAction(style: .normal, title: "Edit") { (action, view, completion) in
             if self.searching {
                 let personEdit: DukePerson = self.searchSections[indexPath.section].personList[indexPath.row]
-                self.performSegue(withIdentifier: "MasterToDetail", sender: personEdit)
+                self.performSegue(withIdentifier: "MasterToDetail_Edit", sender: personEdit)
             }
             else{
               let personEdit: DukePerson = sections[indexPath.section].personList[indexPath.row]
-              self.performSegue(withIdentifier: "MasterToDetail", sender: personEdit)
+              self.performSegue(withIdentifier: "MasterToDetail_Edit", sender: personEdit)
             }
           }
           action.backgroundColor = .white

@@ -13,8 +13,8 @@ class PageVC: UIPageViewController, UIPageViewControllerDataSource, UIPageViewCo
     
     var person: DukePerson?
     var addPage: Bool!
-    var editTextFieldToggle: Bool = false
-    var isEditMode: Bool = false
+    var editTextFieldToggle: Bool!
+    var isEditMode: Bool!
     lazy var subViewControllers: [UIViewController] = {
         let destVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailVC") as! DetailVC
         destVC.person = person

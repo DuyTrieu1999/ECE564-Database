@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LpT-00-ayt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LpT-00-ayt">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -116,6 +116,7 @@
                     <connections>
                         <outlet property="barSearch" destination="G50-ft-TS4" id="0Fz-Pi-2sk"/>
                         <segue destination="4bF-Mt-GC9" kind="show" identifier="MasterToDetail" id="1B7-bZ-H6Z"/>
+                        <segue destination="4bF-Mt-GC9" kind="show" identifier="MasterToDetail_Edit" id="rRB-Vc-PBr"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="67O-8C-zeX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -587,6 +588,6 @@
         <image name="play.circle" catalog="system" width="64" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="tzg-XG-tc1"/>
+        <segue reference="rRB-Vc-PBr"/>
     </inferredMetricsTieBreakers>
 </document>
