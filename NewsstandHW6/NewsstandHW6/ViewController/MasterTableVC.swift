@@ -118,32 +118,50 @@ class MasterTableVC: UITableViewController {
         return true
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            if searching {
-                let personDelete: DukePerson = searchSections[indexPath.section].personList[indexPath.row]
-                if let index = dukePersons.firstIndex(where: {
-                    $0.firstName == personDelete.firstName && $0.lastName == personDelete.lastName
-                }) {
-                    dukePersons.remove(at: index)
-                }
-                searchSections[indexPath.section].personList.remove(at:indexPath.row)
+   override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+          let delete = deleteAction(at: indexPath)
+          let edit = editAction(at: indexPath)
+          return UISwipeActionsConfiguration(actions: [edit, delete])
+      }
+      
+      func editAction(at indexPath: IndexPath) -> UIContextualAction{
+          let action = UIContextualAction(style: .normal, title: "Edit") { (action, view, completion) in
+              let personEdit: DukePerson = sections[indexPath.section].personList[indexPath.row]
+              self.performSegue(withIdentifier: "MasterToDetail", sender: personEdit)
+          }
+          action.backgroundColor = .white
+          action.image = UIImage(imageLiteralResourceName: "edit_icon").resized(toWidth: 40.0)
+          return action
+      }
+      func deleteAction(at indexPath: IndexPath) -> UIContextualAction{
+          let action = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completion) in
+              if self.searching {
+                  let personDelete: DukePerson = self.searchSections[indexPath.section].personList[indexPath.row]
+                 if let index = dukePersons.firstIndex(where: {
+                     $0.firstName == personDelete.firstName && $0.lastName == personDelete.lastName
+                 }) {
+                     dukePersons.remove(at: index)
+                 }
+               self.searchSections[indexPath.section].personList.remove(at:indexPath.row)
 
-            }
-            else {
-                let personDelete: DukePerson = sections[indexPath.section].personList[indexPath.row]
-                if let index = dukePersons.firstIndex(where: {
-                    $0.firstName == personDelete.firstName && $0.lastName == personDelete.lastName
-                }) {
-                    dukePersons.remove(at: index)
-                }
-                sections[indexPath.section].personList.remove(at:indexPath.row)
-            }
-            tableView.deleteRows(at: [indexPath], with: .fade)
+                         }
+             else {
+                 let personDelete: DukePerson = sections[indexPath.section].personList[indexPath.row]
+                 if let index = dukePersons.firstIndex(where: {
+                     $0.firstName == personDelete.firstName && $0.lastName == personDelete.lastName
+                 }) {
+                     dukePersons.remove(at: index)
+                 }
+                 sections[indexPath.section].personList.remove(at:indexPath.row)
+             }
+            self.tableView.deleteRows(at: [indexPath], with: .fade)
             sections = updateSections()
             self.tableView.reloadData()
-        }
-    }
+          }
+          action.backgroundColor = .white
+          action.image = UIImage(imageLiteralResourceName: "delete").resized(toWidth: 40.0)
+          return action
+      }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -182,5 +200,15 @@ extension MasterTableVC: UISearchBarDelegate{
         searching = false
         searchBar.text = ""
         tableView.reloadData()
+    }
+}
+
+extension UIImage {
+    func resized(toWidth width: CGFloat) -> UIImage? {
+        let canvasSize = CGSize(width: width, height: CGFloat(ceil(width/size.width * size.height)))
+        UIGraphicsBeginImageContextWithOptions(canvasSize, false, scale)
+        defer { UIGraphicsEndImageContext() }
+        draw(in: CGRect(origin: .zero, size: canvasSize))
+        return UIGraphicsGetImageFromCurrentImageContext()
     }
 }
