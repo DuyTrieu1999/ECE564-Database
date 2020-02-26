@@ -25,7 +25,24 @@
 		3FA003712405F622005A902A /* SwimmingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA003702405F621005A902A /* SwimmingVC.swift */; };
 		3FA003732405F629005A902A /* SwimmingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA003722405F628005A902A /* SwimmingView.swift */; };
 		D05F9A842405DA0E00378E6B /* QiruiVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05F9A832405DA0E00378E6B /* QiruiVC.swift */; };
+		C8FAEAF42405E26A00503293 /* shibauthframework2019.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8FAEAE92405DA3F00503293 /* shibauthframework2019.framework */; };
+		C8FAEAF52405E26A00503293 /* shibauthframework2019.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C8FAEAE92405DA3F00503293 /* shibauthframework2019.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C8FAEAFB2405E93B00503293 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FAEAFA2405E93B00503293 /* StartViewController.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C8FAEAE82405D59500503293 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C8FAEAF52405E26A00503293 /* shibauthframework2019.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3F4B021D2404CC0800522447 /* NewsstandHW6.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsstandHW6.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,6 +65,8 @@
 		3FA003702405F621005A902A /* SwimmingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwimmingVC.swift; sourceTree = "<group>"; };
 		3FA003722405F628005A902A /* SwimmingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwimmingView.swift; sourceTree = "<group>"; };
 		D05F9A832405DA0E00378E6B /* QiruiVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiruiVC.swift; sourceTree = "<group>"; };
+		C8FAEAE92405DA3F00503293 /* shibauthframework2019.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = shibauthframework2019.framework; sourceTree = "<group>"; };
+		C8FAEAFA2405E93B00503293 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8FAEAF42405E26A00503293 /* shibauthframework2019.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +86,7 @@
 			children = (
 				3F4B021F2404CC0800522447 /* NewsstandHW6 */,
 				3F4B021E2404CC0800522447 /* Products */,
+				C8FAEAF32405E26A00503293 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -80,6 +101,7 @@
 		3F4B021F2404CC0800522447 /* NewsstandHW6 */ = {
 			isa = PBXGroup;
 			children = (
+				C8FAEAE92405DA3F00503293 /* shibauthframework2019.framework */,
 				3F4B02362404CCDF00522447 /* Content */,
 				3F4B02352404CCD500522447 /* ViewController */,
 				3F4B02342404CCC900522447 /* DataModel */,
@@ -110,6 +132,7 @@
 				3F4B023E2404CD0A00522447 /* MasterTableVC.swift */,
 				3F4B023C2404CD0A00522447 /* PageVC.swift */,
 				3F4B023D2404CD0A00522447 /* personTableCell.swift */,
+				C8FAEAFA2405E93B00503293 /* StartViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -135,6 +158,13 @@
 			path = animation;
 			sourceTree = "<group>";
 		};
+		C8FAEAF32405E26A00503293 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -145,6 +175,7 @@
 				3F4B02192404CC0800522447 /* Sources */,
 				3F4B021A2404CC0800522447 /* Frameworks */,
 				3F4B021B2404CC0800522447 /* Resources */,
+				C8FAEAE82405D59500503293 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -217,6 +248,7 @@
 				3FA003732405F629005A902A /* SwimmingView.swift in Sources */,
 				D05F9A842405DA0E00378E6B /* QiruiVC.swift in Sources */,
 				3F4B02212404CC0800522447 /* AppDelegate.swift in Sources */,
+				C8FAEAFB2405E93B00503293 /* StartViewController.swift in Sources */,
 				3F4B024F2404CEB300522447 /* WorldVC.swift in Sources */,
 				3FA003712405F622005A902A /* SwimmingVC.swift in Sources */,
 				3F4B02232404CC0800522447 /* SceneDelegate.swift in Sources */,
@@ -358,6 +390,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2SU737PNN9;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/**",
+					"$(PROJECT_DIR)/NewsstandHW6",
+				);
 				INFOPLIST_FILE = NewsstandHW6/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -376,6 +412,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2SU737PNN9;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/**",
+					"$(PROJECT_DIR)/NewsstandHW6",
+				);
 				INFOPLIST_FILE = NewsstandHW6/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
