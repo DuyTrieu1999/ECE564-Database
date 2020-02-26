@@ -22,8 +22,9 @@
 		3F4B024A2404CDE500522447 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F4B02492404CDE400522447 /* Main.storyboard */; };
 		3F4B024E2404CEB300522447 /* WorldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4B024C2404CEB200522447 /* WorldView.swift */; };
 		3F4B024F2404CEB300522447 /* WorldVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4B024D2404CEB300522447 /* WorldVC.swift */; };
-		3FA0036D2405D2A3005A902A /* SwimmingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA0036C2405D2A3005A902A /* SwimmingView.swift */; };
-		3FA0036F2405D51A005A902A /* SwimmingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA0036E2405D51A005A902A /* SwimmingVC.swift */; };
+		3FA003712405F622005A902A /* SwimmingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA003702405F621005A902A /* SwimmingVC.swift */; };
+		3FA003732405F629005A902A /* SwimmingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA003722405F628005A902A /* SwimmingView.swift */; };
+		D05F9A842405DA0E00378E6B /* QiruiVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05F9A832405DA0E00378E6B /* QiruiVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,8 +45,9 @@
 		3F4B02492404CDE400522447 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		3F4B024C2404CEB200522447 /* WorldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldView.swift; sourceTree = "<group>"; };
 		3F4B024D2404CEB300522447 /* WorldVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldVC.swift; sourceTree = "<group>"; };
-		3FA0036C2405D2A3005A902A /* SwimmingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimmingView.swift; sourceTree = "<group>"; };
-		3FA0036E2405D51A005A902A /* SwimmingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimmingVC.swift; sourceTree = "<group>"; };
+		3FA003702405F621005A902A /* SwimmingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwimmingVC.swift; sourceTree = "<group>"; };
+		3FA003722405F628005A902A /* SwimmingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwimmingView.swift; sourceTree = "<group>"; };
+		D05F9A832405DA0E00378E6B /* QiruiVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiruiVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,10 +126,11 @@
 			isa = PBXGroup;
 			children = (
 				3F4B024D2404CEB300522447 /* WorldVC.swift */,
-				3FA0036E2405D51A005A902A /* SwimmingVC.swift */,
 				3F4B024C2404CEB200522447 /* WorldView.swift */,
+				3FA003702405F621005A902A /* SwimmingVC.swift */,
+				3FA003722405F628005A902A /* SwimmingView.swift */,
 				3F4B02402404CD0B00522447 /* YogoVC.swift */,
-				3FA0036C2405D2A3005A902A /* SwimmingView.swift */,
+				D05F9A832405DA0E00378E6B /* QiruiVC.swift */,
 			);
 			path = animation;
 			sourceTree = "<group>";
@@ -207,14 +210,15 @@
 				3F4B023A2404CCFA00522447 /* DataModel.swift in Sources */,
 				3F4B02462404CD0B00522447 /* YogoVC.swift in Sources */,
 				3F4B02442404CD0B00522447 /* MasterTableVC.swift in Sources */,
-				3FA0036D2405D2A3005A902A /* SwimmingView.swift in Sources */,
 				3F4B024E2404CEB300522447 /* WorldView.swift in Sources */,
 				3F4B02422404CD0B00522447 /* PageVC.swift in Sources */,
 				3F4B02452404CD0B00522447 /* DetailVC.swift in Sources */,
 				3F4B02392404CCFA00522447 /* DataGroup.swift in Sources */,
+				3FA003732405F629005A902A /* SwimmingView.swift in Sources */,
+				D05F9A842405DA0E00378E6B /* QiruiVC.swift in Sources */,
 				3F4B02212404CC0800522447 /* AppDelegate.swift in Sources */,
 				3F4B024F2404CEB300522447 /* WorldVC.swift in Sources */,
-				3FA0036F2405D51A005A902A /* SwimmingVC.swift in Sources */,
+				3FA003712405F622005A902A /* SwimmingVC.swift in Sources */,
 				3F4B02232404CC0800522447 /* SceneDelegate.swift in Sources */,
 				3F4B02432404CD0B00522447 /* personTableCell.swift in Sources */,
 			);
