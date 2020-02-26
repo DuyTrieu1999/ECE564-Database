@@ -12,7 +12,7 @@ class personTableCell: UITableViewCell {
     @IBOutlet weak var personImageView: UIImageView!
     @IBOutlet weak var personName: UILabel!
     @IBOutlet weak var personSummary: UILabel!
-    
+    @IBOutlet weak var favouriteImageView: UIImageView!
     @IBOutlet weak var playImageView: UIImageView!
     override func draw(_ rect: CGRect) {
         super.draw(rect)
@@ -21,6 +21,7 @@ class personTableCell: UITableViewCell {
         
         personSummary.lineBreakMode = .byWordWrapping
         personSummary.numberOfLines = 0
+        favouriteImageView.clipsToBounds = true
        }
     
     func setPerson(person: DukePerson) {
