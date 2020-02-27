@@ -17,6 +17,7 @@ class MasterTableVC: UITableViewController {
     var searchDukePerson: [DukePerson]!
     var searchSections:[GroupSection]!
     var searching = false
+    var lightBlue = UIColor(red: 212.0/255.0, green: 239.0/255.0, blue: 252.0/255.0, alpha: 1.0)
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.keyboardDismissMode = .onDrag
@@ -134,7 +135,7 @@ class MasterTableVC: UITableViewController {
       }
       
       func editAction(at indexPath: IndexPath) -> UIContextualAction{
-          let action = UIContextualAction(style: .normal, title: "Edit") { (action, view, completion) in
+          let action = UIContextualAction(style: .normal, title: "") { (action, view, completion) in
             if self.searching {
                 let personEdit: DukePerson = self.searchSections[indexPath.section].personList[indexPath.row]
                 self.performSegue(withIdentifier: "MasterToDetail_Edit", sender: personEdit)
@@ -144,12 +145,12 @@ class MasterTableVC: UITableViewController {
               self.performSegue(withIdentifier: "MasterToDetail_Edit", sender: personEdit)
             }
           }
-          action.backgroundColor = .white
-          action.image = UIImage(imageLiteralResourceName: "edit_icon").resized(toWidth: 40.0)
-          return action
+        action.backgroundColor = lightBlue
+        action.image = UIImage(imageLiteralResourceName: "edit_icon").resized(toWidth: 40.0)
+        return action
       }
       func deleteAction(at indexPath: IndexPath) -> UIContextualAction{
-          let action = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completion) in
+          let action = UIContextualAction(style: .destructive, title: "") { (action, view, completion) in
               if self.searching {
                   let personDelete: DukePerson = self.searchSections[indexPath.section].personList[indexPath.row]
                  if let index = dukePersons.firstIndex(where: {
@@ -173,38 +174,38 @@ class MasterTableVC: UITableViewController {
             sections = updateSections()
             self.tableView.reloadData()
           }
-          action.backgroundColor = .white
+          action.backgroundColor = lightBlue
           action.image = UIImage(imageLiteralResourceName: "delete").resized(toWidth: 40.0)
           return action
       }
     
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let favourite = displayFavourite(at: indexPath)
+        let favourite = favouriteAction(at: indexPath)
         return UISwipeActionsConfiguration(actions: [favourite])
     }
-    func displayFavourite(at indexPath: IndexPath) -> UIContextualAction{
-          if self.searching {
-              let personFavourite: DukePerson = self.searchSections[indexPath.section].personList[indexPath.row]
-              let isFavouriteTitle = personFavourite.isFavourite ? "UnFavourite" : "Favourite"
-              let favouriteAction = UIContextualAction(style: .normal, title: isFavouriteTitle) { (action, view, completion) in
-                  personFavourite.isFavourite.toggle()
-                let cell = self.tableView.cellForRow(at: indexPath) as! personTableCell
-                self.searchSections[indexPath.section].personList[indexPath.row] = personFavourite
-                cell.setPerson(person: personFavourite)
-              }
-              return favouriteAction
-          }
-          else {
-              let personFavourite: DukePerson = sections[indexPath.section].personList[indexPath.row]
-              let isFavouriteTitle = personFavourite.isFavourite ? "UnFavourite" : "Favourite"
-              let favouriteAction = UIContextualAction(style: .normal, title: isFavouriteTitle) { (action, view, completion) in
-                  personFavourite.isFavourite.toggle()
-                let cell = self.tableView.cellForRow(at: indexPath) as! personTableCell
-                sections[indexPath.section].personList[indexPath.row] = personFavourite
-                cell.setPerson(person: personFavourite)
-              }
-              return favouriteAction
-          }
+    
+    /// Define favourtite action
+    func favouriteAction(at indexPath: IndexPath) -> UIContextualAction{
+          let action = UIContextualAction(style: .destructive, title: "favourite") { (action, view, completion) in
+            var personFavourite: DukePerson!
+           if self.searching {
+            personFavourite = self.searchSections[indexPath.section].personList[indexPath.row]
+           }
+            else {
+                 personFavourite = sections[indexPath.section].personList[indexPath.row]
+            }
+            for dukeperson in dukePersons {
+                if dukeperson.firstName == personFavourite.firstName && dukeperson.lastName == personFavourite.lastName {
+                    dukeperson.isFavourite = !dukeperson.isFavourite
+                    sections = updateSections()
+                    break
+                }
+            }
+         self.tableView.reloadData()
+       }
+       action.backgroundColor = .white
+       action.image = UIImage(imageLiteralResourceName: "heart_blue").resized(toWidth: 40.0)
+       return action
     }
     
     override func viewWillAppear(_ animated: Bool) {

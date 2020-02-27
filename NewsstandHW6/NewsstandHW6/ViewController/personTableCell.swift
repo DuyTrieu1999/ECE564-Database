@@ -39,7 +39,12 @@ class personTableCell: UITableViewCell {
         else {
             playImageView.isHidden = false
         }
-        favouriteImageView.isHidden = !person_found.isFavourite
+        if person_found.isFavourite {
+            favouriteImageView.isHidden = false
+        }
+        else{
+            favouriteImageView.isHidden = true
+        }
         personSummary.text = description
        }
 }

@@ -34,15 +34,16 @@ class Person: Codable {
     var isFavourite = false
     
     private enum CodingKeys: String, CodingKey{
-        case firstName, lastName, whereFrom, gender, nextPage
+        case firstName, lastName, whereFrom, gender, nextPage, isFavourite
     }
 
-    init(firstName: String, lastName: String, whereFrom: String, gender: Gender, nextPage: String){
+    init(firstName: String, lastName: String, whereFrom: String, gender: Gender, nextPage: String, isFavourite: Bool){
            self.firstName = firstName
            self.lastName = lastName
            self.whereFrom = whereFrom
            self.gender = gender
            self.nextPage = nextPage
+           self.isFavourite = isFavourite
            
        }
     
@@ -53,6 +54,7 @@ class Person: Codable {
         whereFrom = try container.decode(String.self, forKey: .whereFrom)
         gender = try container.decode(Gender.self, forKey: .gender)
         nextPage = try container.decode(String.self, forKey: .nextPage)
+        isFavourite = try container.decode(Bool.self, forKey: .isFavourite)
     }
 
     func encode(to encoder: Encoder) throws {
@@ -62,6 +64,7 @@ class Person: Codable {
         try container.encode(whereFrom, forKey: .whereFrom)
         try container.encode(gender, forKey:.gender)
         try container.encode(nextPage, forKey: .nextPage)
+        try container.encode(isFavourite, forKey: .isFavourite)
     }
 }
 
@@ -139,7 +142,7 @@ class DukePerson: Person, ECE564, CustomStringConvertible {
     
     private enum CodingKeys: String, CodingKey { case hobbies, role, degree, languages, picture, team, netid, email, department, id }
     
-    init (firstName: String, lastName: String, whereFrom: String, gender: Gender, hobbies: [String], role: DukeRole, degree: DegreeType, languages: [String], picture: UIImage, team: String, netid: String, email: String, department: String, id: String, nextPage: String) {
+    init (firstName: String, lastName: String, whereFrom: String, gender: Gender, hobbies: [String], role: DukeRole, degree: DegreeType, languages: [String], picture: UIImage, team: String, netid: String, email: String, department: String, id: String, nextPage: String, isFavourite: Bool) {
         self.hobbies = hobbies
         self.role = role
         self.degree = degree
@@ -150,7 +153,7 @@ class DukePerson: Person, ECE564, CustomStringConvertible {
         self.email = email
         self.department = department
         self.id = id
-        super.init(firstName: firstName, lastName: lastName, whereFrom: whereFrom, gender: gender, nextPage: nextPage)
+        super.init(firstName: firstName, lastName: lastName, whereFrom: whereFrom, gender: gender, nextPage: nextPage, isFavourite: isFavourite)
      
     }
     
@@ -230,16 +233,16 @@ class DukePerson: Person, ECE564, CustomStringConvertible {
     }
 }
 // dukePerson entries
-let myself = DukePerson(firstName: "Yuqin", lastName: "Shen", whereFrom: "Guangdong, China", gender: .Female, hobbies: ["yogo", "reading", "Pili dramas"], role: .Student, degree: .MS, languages: ["C++", "Python", "Java"], picture: UIImage(imageLiteralResourceName: "myself"), team: "Newsstand", netid: "ys238", email: "ys238@duke.edu", department: "Pratt School of Engineering", id: "", nextPage: "Reading")
-let professor =  DukePerson(firstName: "Ric", lastName: "Telford", whereFrom: "Chatham County, NC", gender: .Male, hobbies: ["swimming", "biking", "hiking"], role: .Professor, degree: .BS, languages: ["Swift", "C", "C++"], picture: UIImage(imageLiteralResourceName: "Ric"), team: "Professor", netid: "rt113", email: "rt113@duke.edu", department: "Pratt School of Engineering", id: "", nextPage: "no")
-let TA1 = DukePerson(firstName: "Jingru", lastName: "Gao", whereFrom: "Shanghai, China", gender: .Female, hobbies: ["traveling", "reading", "movies"], role: .TA, degree: .MS, languages: ["Swift", "C++", "Python"], picture: UIImage(imageLiteralResourceName: "Jingru"), team: "TA", netid: "jg404", email: "jg404@duke.edu", department: "Pratt School of Engineering", id: "", nextPage: "no")
-let TA2 = DukePerson(firstName: "Haohong", lastName: "Zhao", whereFrom: "Hebei, China", gender: .Male, hobbies: ["reading", "jogging"], role: .Student, degree: .MS, languages: ["Swift", "Python"], picture: UIImage(imageLiteralResourceName: "haohong"), team: "TA", netid: "hz147", email: "hz147@duke.edu", department: "Pratt School of Engineering", id: "", nextPage: "no")
+let myself = DukePerson(firstName: "Yuqin", lastName: "Shen", whereFrom: "Guangdong, China", gender: .Female, hobbies: ["yogo", "reading", "Pili dramas"], role: .Student, degree: .MS, languages: ["C++", "Python", "Java"], picture: UIImage(imageLiteralResourceName: "myself"), team: "Newsstand", netid: "ys238", email: "ys238@duke.edu", department: "Pratt School of Engineering", id: "", nextPage: "Reading", isFavourite: false)
+let professor =  DukePerson(firstName: "Ric", lastName: "Telford", whereFrom: "Chatham County, NC", gender: .Male, hobbies: ["swimming", "biking", "hiking"], role: .Professor, degree: .BS, languages: ["Swift", "C", "C++"], picture: UIImage(imageLiteralResourceName: "Ric"), team: "Professor", netid: "rt113", email: "rt113@duke.edu", department: "Pratt School of Engineering", id: "", nextPage: "no", isFavourite: false)
+let TA1 = DukePerson(firstName: "Jingru", lastName: "Gao", whereFrom: "Shanghai, China", gender: .Female, hobbies: ["traveling", "reading", "movies"], role: .TA, degree: .MS, languages: ["Swift", "C++", "Python"], picture: UIImage(imageLiteralResourceName: "Jingru"), team: "TA", netid: "jg404", email: "jg404@duke.edu", department: "Pratt School of Engineering", id: "", nextPage: "no", isFavourite: false)
+let TA2 = DukePerson(firstName: "Haohong", lastName: "Zhao", whereFrom: "Hebei, China", gender: .Male, hobbies: ["reading", "jogging"], role: .Student, degree: .MS, languages: ["Swift", "Python"], picture: UIImage(imageLiteralResourceName: "haohong"), team: "TA", netid: "hz147", email: "hz147@duke.edu", department: "Pratt School of Engineering", id: "", nextPage: "no", isFavourite: false)
 
 // add more two persons
 
-let CongLi: DukePerson = DukePerson(firstName: "Cong", lastName: "Li", whereFrom: "Shanxi, China", gender: .Male, hobbies: ["traveling", "reading"], role: .Student, degree: .MS, languages: ["C++", "Java"], picture: UIImage(imageLiteralResourceName: "congli"), team: "Newsstand", netid: "ym132", email: "ym132@duke.edu", department: "Pratt School of Engineering", id: "", nextPage: "Swimming")
-let QiruiHe: DukePerson = DukePerson(firstName: "Qirui", lastName: "He", whereFrom: "Guangxi, China", gender: .Male, hobbies: ["Basketball"], role: .Student, degree: .MS, languages: ["C++", "Python", "Java"], picture: UIImage(imageLiteralResourceName: "qirui"), team: "Newsstand", netid: "qh37", email: "qh37@duke.edu", department: "Pratt School of Engineering", id: "qh37", nextPage: "Qirui")
-let TrieuDuy: DukePerson = DukePerson(firstName: "Trieu", lastName: "Duy", whereFrom: "Hanoi, Vietnam", gender: .Male, hobbies: ["traveling", "cooking", "coding"], role: .Student, degree: .BS, languages: ["JS", "Python", "Java"], picture: UIImage(imageLiteralResourceName: "duytrieu"), team: "Newsstand", netid: "dvt5", email: "dvt5@duke.edu", department: "Trinity School", id: "", nextPage: "world")
+let CongLi: DukePerson = DukePerson(firstName: "Cong", lastName: "Li", whereFrom: "Shanxi, China", gender: .Male, hobbies: ["traveling", "reading"], role: .Student, degree: .MS, languages: ["C++", "Java"], picture: UIImage(imageLiteralResourceName: "congli"), team: "Newsstand", netid: "ym132", email: "ym132@duke.edu", department: "Pratt School of Engineering", id: "", nextPage: "Swimming", isFavourite: false)
+let QiruiHe: DukePerson = DukePerson(firstName: "Qirui", lastName: "He", whereFrom: "Guangxi, China", gender: .Male, hobbies: ["Basketball"], role: .Student, degree: .MS, languages: ["C++", "Python", "Java"], picture: UIImage(imageLiteralResourceName: "qirui"), team: "Newsstand", netid: "qh37", email: "qh37@duke.edu", department: "Pratt School of Engineering", id: "qh37", nextPage: "Qirui", isFavourite: false)
+let TrieuDuy: DukePerson = DukePerson(firstName: "Trieu", lastName: "Duy", whereFrom: "Hanoi, Vietnam", gender: .Male, hobbies: ["traveling", "cooking", "coding"], role: .Student, degree: .BS, languages: ["JS", "Python", "Java"], picture: UIImage(imageLiteralResourceName: "duytrieu"), team: "Newsstand", netid: "dvt5", email: "dvt5@duke.edu", department: "Trinity School", id: "", nextPage: "world", isFavourite: false)
 var dukePersons: [DukePerson] = [myself, professor, TA1, TA2, CongLi, QiruiHe, TrieuDuy]
 
 
