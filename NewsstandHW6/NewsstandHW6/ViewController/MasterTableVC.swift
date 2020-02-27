@@ -204,7 +204,7 @@ class MasterTableVC: UITableViewController {
          self.tableView.reloadData()
        }
        action.backgroundColor = .white
-       action.image = UIImage(imageLiteralResourceName: "heart_blue").resized(toWidth: 40.0)
+       action.image = UIImage(imageLiteralResourceName: "heart_blue").resized(toWidth: 50.0)
        return action
     }
     
