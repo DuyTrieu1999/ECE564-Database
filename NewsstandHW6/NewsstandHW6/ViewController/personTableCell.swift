@@ -12,7 +12,7 @@ class personTableCell: UITableViewCell {
     @IBOutlet weak var personImageView: UIImageView!
     @IBOutlet weak var personName: UILabel!
     @IBOutlet weak var personSummary: UILabel!
-    
+    @IBOutlet weak var favouriteImageView: UIImageView!
     @IBOutlet weak var playImageView: UIImageView!
     override func draw(_ rect: CGRect) {
         super.draw(rect)
@@ -21,6 +21,10 @@ class personTableCell: UITableViewCell {
         
         personSummary.lineBreakMode = .byWordWrapping
         personSummary.numberOfLines = 0
+        let favoriteImg : UIImage = UIImage(named: "heart_blue")!
+        favouriteImageView.image = favoriteImg
+        favouriteImageView.clipsToBounds = true
+        favouriteImageView.contentMode = .scaleAspectFit
        }
     
     func setPerson(person: DukePerson) {
@@ -34,6 +38,12 @@ class personTableCell: UITableViewCell {
         }
         else {
             playImageView.isHidden = false
+        }
+        if person_found.isFavourite {
+            favouriteImageView.isHidden = false
+        }
+        else{
+            favouriteImageView.isHidden = true
         }
         personSummary.text = description
        }

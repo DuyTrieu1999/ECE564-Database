@@ -13,8 +13,8 @@ class PageVC: UIPageViewController, UIPageViewControllerDataSource, UIPageViewCo
     
     var person: DukePerson?
     var addPage: Bool!
-    var editTextFieldToggle: Bool = false
-    var isEditMode: Bool = false
+    var editTextFieldToggle: Bool!
+    var isEditMode: Bool!
     lazy var subViewControllers: [UIViewController] = {
         let destVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailVC") as! DetailVC
         destVC.person = person
@@ -23,6 +23,10 @@ class PageVC: UIPageViewController, UIPageViewControllerDataSource, UIPageViewCo
         destVC.isEditMode = isEditMode
         let yogoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "YogoVC") as! YogoVC
         let worldVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WorldVC") as! WorldVC
+
+        let swimmingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SwimmingVC") as! SwimmingVC
+
+        let qiruiVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "QiruiVC") as! QiruiVC
         var subVC: [UIViewController] = [destVC]
         if person?.nextPage == "Reading" {
             subVC.append(yogoVC)
@@ -30,9 +34,15 @@ class PageVC: UIPageViewController, UIPageViewControllerDataSource, UIPageViewCo
         else if person?.nextPage == "world" {
             subVC.append(worldVC)
         }
+        else if person?.nextPage == "Swimming" {
+            subVC.append(swimmingVC)
+        }
+        else if person?.nextPage == "Qirui" {
+            subVC.append(qiruiVC)
+        }
            return subVC
-       }()
-       
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self

@@ -17,6 +17,7 @@ class MasterTableVC: UITableViewController {
     var searchDukePerson: [DukePerson]!
     var searchSections:[GroupSection]!
     var searching = false
+    var lightBlue = UIColor(red: 212.0/255.0, green: 239.0/255.0, blue: 252.0/255.0, alpha: 1.0)
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.keyboardDismissMode = .onDrag
@@ -38,11 +39,20 @@ class MasterTableVC: UITableViewController {
             let destCV = segue.destination as! PageVC
             destCV.person = sender as? DukePerson
             destCV.addPage = false
+            destCV.isEditMode = false
+            destCV.editTextFieldToggle = false
         }
         if segue.identifier == "addPerson" {
             let destCV = segue.destination as! PageVC
             destCV.person = sender as? DukePerson
             destCV.addPage = true
+            destCV.isEditMode = true
+            destCV.editTextFieldToggle = true
+        }
+        if segue.identifier == "MasterToDetail_Edit" {
+            let destCV = segue.destination as! PageVC
+            destCV.person = sender as? DukePerson
+            destCV.addPage = false
             destCV.isEditMode = true
             destCV.editTextFieldToggle = true
         }
@@ -118,31 +128,84 @@ class MasterTableVC: UITableViewController {
         return true
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            if searching {
-                let personDelete: DukePerson = searchSections[indexPath.section].personList[indexPath.row]
-                if let index = dukePersons.firstIndex(where: {
-                    $0.firstName == personDelete.firstName && $0.lastName == personDelete.lastName
-                }) {
-                    dukePersons.remove(at: index)
-                }
-                searchSections[indexPath.section].personList.remove(at:indexPath.row)
+   override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+          let delete = deleteAction(at: indexPath)
+          let edit = editAction(at: indexPath)
+          return UISwipeActionsConfiguration(actions: [edit, delete])
+      }
+      
+      func editAction(at indexPath: IndexPath) -> UIContextualAction{
+          let action = UIContextualAction(style: .normal, title: "") { (action, view, completion) in
+            if self.searching {
+                let personEdit: DukePerson = self.searchSections[indexPath.section].personList[indexPath.row]
+                self.performSegue(withIdentifier: "MasterToDetail_Edit", sender: personEdit)
+            }
+            else{
+              let personEdit: DukePerson = sections[indexPath.section].personList[indexPath.row]
+              self.performSegue(withIdentifier: "MasterToDetail_Edit", sender: personEdit)
+            }
+          }
+        action.backgroundColor = lightBlue
+        action.image = UIImage(imageLiteralResourceName: "edit_icon").resized(toWidth: 40.0)
+        return action
+      }
+      func deleteAction(at indexPath: IndexPath) -> UIContextualAction{
+          let action = UIContextualAction(style: .destructive, title: "") { (action, view, completion) in
+              if self.searching {
+                  let personDelete: DukePerson = self.searchSections[indexPath.section].personList[indexPath.row]
+                 if let index = dukePersons.firstIndex(where: {
+                     $0.firstName == personDelete.firstName && $0.lastName == personDelete.lastName
+                 }) {
+                     dukePersons.remove(at: index)
+                 }
+               self.searchSections[indexPath.section].personList.remove(at:indexPath.row)
 
-            }
-            else {
-                let personDelete: DukePerson = sections[indexPath.section].personList[indexPath.row]
-                if let index = dukePersons.firstIndex(where: {
-                    $0.firstName == personDelete.firstName && $0.lastName == personDelete.lastName
-                }) {
-                    dukePersons.remove(at: index)
-                }
-                sections[indexPath.section].personList.remove(at:indexPath.row)
-            }
-            tableView.deleteRows(at: [indexPath], with: .fade)
+                         }
+             else {
+                 let personDelete: DukePerson = sections[indexPath.section].personList[indexPath.row]
+                 if let index = dukePersons.firstIndex(where: {
+                     $0.firstName == personDelete.firstName && $0.lastName == personDelete.lastName
+                 }) {
+                     dukePersons.remove(at: index)
+                 }
+                 sections[indexPath.section].personList.remove(at:indexPath.row)
+             }
+            self.tableView.deleteRows(at: [indexPath], with: .fade)
             sections = updateSections()
             self.tableView.reloadData()
-        }
+          }
+          action.backgroundColor = lightBlue
+          action.image = UIImage(imageLiteralResourceName: "delete").resized(toWidth: 40.0)
+          return action
+      }
+    
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let favourite = favouriteAction(at: indexPath)
+        return UISwipeActionsConfiguration(actions: [favourite])
+    }
+    
+    /// Define favourtite action
+    func favouriteAction(at indexPath: IndexPath) -> UIContextualAction{
+          let action = UIContextualAction(style: .destructive, title: "favourite") { (action, view, completion) in
+            var personFavourite: DukePerson!
+           if self.searching {
+            personFavourite = self.searchSections[indexPath.section].personList[indexPath.row]
+           }
+            else {
+                 personFavourite = sections[indexPath.section].personList[indexPath.row]
+            }
+            for dukeperson in dukePersons {
+                if dukeperson.firstName == personFavourite.firstName && dukeperson.lastName == personFavourite.lastName {
+                    dukeperson.isFavourite = !dukeperson.isFavourite
+                    sections = updateSections()
+                    break
+                }
+            }
+         self.tableView.reloadData()
+       }
+       action.backgroundColor = .white
+       action.image = UIImage(imageLiteralResourceName: "heart_blue").resized(toWidth: 50.0)
+       return action
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -182,5 +245,15 @@ extension MasterTableVC: UISearchBarDelegate{
         searching = false
         searchBar.text = ""
         tableView.reloadData()
+    }
+}
+
+extension UIImage {
+    func resized(toWidth width: CGFloat) -> UIImage? {
+        let canvasSize = CGSize(width: width, height: CGFloat(ceil(width/size.width * size.height)))
+        UIGraphicsBeginImageContextWithOptions(canvasSize, false, scale)
+        defer { UIGraphicsEndImageContext() }
+        draw(in: CGRect(origin: .zero, size: canvasSize))
+        return UIGraphicsGetImageFromCurrentImageContext()
     }
 }

@@ -187,7 +187,7 @@ class DetailVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, 
         btnEdit.clipsToBounds = true
         btnEdit.backgroundColor = twitterBlue
         btnEdit.addTarget(self, action: #selector(toogleEditor), for: .touchUpInside)
-        if(addPage) {
+        if(isEditMode) {
             btnEdit.setTitle("Save", for: UIControl.State.normal)
         }
         else{
@@ -369,7 +369,7 @@ class DetailVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, 
                 return true
             }
         }
-        let newPerson: DukePerson = DukePerson(firstName: firstName, lastName: lastName, whereFrom: from, gender: gender, hobbies: hobbies, role: role, degree: degree , languages: languages, picture: personImageView.image ?? UIImage(imageLiteralResourceName: "logo"), team: team, netid: "", email: email, department: "", id: "", nextPage: "no")
+        let newPerson: DukePerson = DukePerson(firstName: firstName, lastName: lastName, whereFrom: from, gender: gender, hobbies: hobbies, role: role, degree: degree , languages: languages, picture: personImageView.image ?? UIImage(imageLiteralResourceName: "logo"), team: team, netid: "", email: email, department: "", id: "", nextPage: "no", isFavourite: false)
         
         dukePersons.append(newPerson)
         sections = updateSections()
