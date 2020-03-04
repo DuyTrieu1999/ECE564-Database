@@ -18,6 +18,7 @@ class MasterTableVC: UITableViewController {
     var searchSections:[GroupSection]!
     var searching = false
     var lightBlue = UIColor(red: 212.0/255.0, green: 239.0/255.0, blue: 252.0/255.0, alpha: 1.0)
+    var curNetID: String?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.keyboardDismissMode = .onDrag

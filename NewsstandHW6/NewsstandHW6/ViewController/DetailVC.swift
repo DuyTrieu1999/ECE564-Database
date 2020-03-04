@@ -188,6 +188,9 @@ class DetailVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, 
         btnEdit.clipsToBounds = true
         btnEdit.backgroundColor = twitterBlue
         btnEdit.addTarget(self, action: #selector(toogleEditor), for: .touchUpInside)
+        btnPost.layer.cornerRadius = btnCancel.layer.bounds.height / 2
+        btnPost.clipsToBounds = true
+        btnPost.backgroundColor = twitterBlue
         if(isEditMode) {
             btnEdit.setTitle("Save", for: UIControl.State.normal)
         }

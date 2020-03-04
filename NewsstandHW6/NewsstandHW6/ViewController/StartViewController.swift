@@ -10,11 +10,14 @@ import UIKit
 import shibauthframework2019
 
 class StartViewController: UIViewController {
-    
+    /// curr netid
+    var currNetID: String?
+    var currPassword: String?
+    /// button and logo
     @IBOutlet var LogoImg: UIImageView!
-        
     @IBOutlet var LogInButton: UIButton!
     let twitterBlue: UIColor = UIColor(red: 29.0/255.0, green: 161.0/255.0, blue: 242.0/255.0, alpha: 1.0)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -50,6 +53,8 @@ extension StartViewController: LoginAlertDelegate {
         let curPassword = netidLookupResult?.password
         print("netID is: \(curId!)")
         print("password is: \(curPassword!)")
+        currNetID = curId
+        currPassword = curPassword
     }
     
     func onFail(_ loginAlertController: LoginAlert, didFinishFailedWith reason: LoginResults) {
@@ -85,6 +90,7 @@ extension StartViewController: LoginAlertDelegate {
         // default implementation provided
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let tableView = storyBoard.instantiateViewController(withIdentifier: "tableView") as! MasterTableVC
+        tableView.curNetID = currNetID
         self.present(tableView, animated: true, completion: nil)
     }
 
