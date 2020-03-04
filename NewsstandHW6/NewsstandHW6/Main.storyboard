@@ -424,6 +424,11 @@
                                                     <outletCollection property="gestureRecognizers" destination="LZy-Nv-bv3" appends="YES" id="D3I-wK-VWf"/>
                                                 </connections>
                                             </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wH1-gk-TnE">
+                                                <rect key="frame" x="48" y="551" width="47" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Post"/>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
@@ -465,6 +470,7 @@
                     <connections>
                         <outlet property="btnCancel" destination="8fH-uc-k75" id="jtD-GJ-bvP"/>
                         <outlet property="btnEdit" destination="nzW-ke-dJd" id="QJm-pi-F83"/>
+                        <outlet property="btnPost" destination="wH1-gk-TnE" id="L5o-Xp-pfZ"/>
                         <outlet property="cameraImageView" destination="x3B-hR-NSc" id="m3w-Kw-ZMf"/>
                         <outlet property="degreeField" destination="ULm-Og-XeF" id="MLa-rX-Gdv"/>
                         <outlet property="degreeLabel" destination="WlG-IE-JNA" id="I6C-0V-mlf"/>
@@ -503,7 +509,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1400" y="-650.22321428571422"/>
+            <point key="canvasLocation" x="1398.5507246376812" y="-650.22321428571422"/>
         </scene>
         <!--PageVC-->
         <scene sceneID="zEB-cM-tFa">

@@ -43,6 +43,7 @@ class DetailVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, 
     // Buttons
     @IBOutlet weak var btnCancel: UIButton!
     @IBOutlet weak var btnEdit: UIButton!
+    @IBOutlet weak var btnPost: UIButton!
     
     var person: DukePerson?
     var addPage: Bool!
@@ -193,8 +194,36 @@ class DetailVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, 
         else{
            btnEdit.setTitle("Edit", for: UIControl.State.normal)
         }
-        
+        if isEditMode {
+            btnPost.isUserInteractionEnabled = false
+        }
+        else {
+            btnPost.isUserInteractionEnabled = true
+        }
+        btnPost.addTarget(self, action: #selector(tooglePost), for: .touchUpInside)
         cameraImageView.tintColor = twitterBlue
+    }
+    /// Post toogler
+    @objc func tooglePost(sender: UIButton){
+        let url = URL(string: "https://rt113-dt01.egr.duke.edu:5640/openapi/ui/#/default/put_entries__id_")
+        guard let requestURL = url else { fatalError() }
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = "PUT"
+        let picImage = person?.picture
+        let picImageData: Data = picImage!.jpegData(compressionQuality: 1)!
+        let picBase64 = picImageData.base64EncodedString()
+        let postString = "id = \(String(describing: person?.id))&netid = \(String(describing: person?.netid))&firstname=\(String(describing: person?.firstName))&lastname=\(String(describing: person?.lastName))&wherefrom=\(String(describing: person?.whereFrom))&gender=\(String(describing: person?.gender.description()))&role=\(String(describing: person?.role.description()))&degree=\(String(describing: person?.degree.description()))&team=\(String(describing: person?.team))&hobbies=\(String(describing: person?.hobbies))&languages=\(String(describing: person?.languages))&department=\(String(describing: person?.department))&email=\(String(describing: person?.email))&picture=\(String(describing: picBase64))"
+        request.httpBody = postString.data(using: String.Encoding.utf8)
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                print("Error took place \(error)")
+                return
+            }
+            if let data = data, let dataString = String(data: data, encoding: .utf8) {
+                print("Response data string:\n \(dataString)")
+            }
+        }
+        task.resume()
     }
     
     /// Cancel toogler

@@ -48,8 +48,8 @@ extension StartViewController: LoginAlertDelegate {
         // other properties needed for homework are also in netidLookupResult
         let curId = netidLookupResult?.netid
         let curPassword = netidLookupResult?.password
-        print(curId!)
-        print(curPassword!)
+        print("netID is: \(curId!)")
+        print("password is: \(curPassword!)")
     }
     
     func onFail(_ loginAlertController: LoginAlert, didFinishFailedWith reason: LoginResults) {
@@ -60,26 +60,29 @@ extension StartViewController: LoginAlertDelegate {
     func inProgress(_ loginAlertController: LoginAlert, didSubmittedWith status: LoginResults) {
         // this method will get called for each step in progress.
         // default implementation provided
+        let url = URL(string: "https://rt113-dt01.egr.duke.edu:5640/client")
+        guard let requestURL = url else { fatalError() }
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = "GET"
+        //request.setValue(<#T##value: String?##String?#>, forHTTPHeaderField: <#T##String#>)
+        let httpRequest = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                print("Error took place \(error)")
+                return
+            }
+            if let response = response as? HTTPURLResponse {
+                print("Response HTTP Status code: \(response.statusCode)")
+            }
+            if let data = data, let dataString = String(data: data, encoding: .utf8) {
+                print("Response data string:\n \(dataString)")
+            }
+        }
+        httpRequest.resume()
     }
     
     func onLoginButtonTapped(_ loginAlertController: LoginAlert) {
         // the login button on the alert is tapped
         // default implementation provided
-        let url = URL(string: "https://rt113-dt01.egr.duke.edu:5640/openapi/ui/#/default/get_login")
-        let httpRequest = URLSession.shared.dataTask(with: url!) { (data, response, error) in
-            if (error != nil) {
-                print("error")
-            }
-            else {
-                do {
-                    let post = try JSONSerialization.jsonObject(with: data!, options: []) as! [String:AnyObject]
-                    
-                } catch let error {
-                    print("json error: \(error)")
-                }
-            }
-        }
-        httpRequest.resume()
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let tableView = storyBoard.instantiateViewController(withIdentifier: "tableView") as! MasterTableVC
         self.present(tableView, animated: true, completion: nil)
