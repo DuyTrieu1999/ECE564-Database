@@ -364,7 +364,8 @@ class DetailVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, 
                 dukeperson.team = team
                 dukeperson.email = email
                 dukeperson.picture = personImageView.image ?? UIImage(imageLiteralResourceName: "logo")
-                sections = updateSections()
+                dataEncoder()
+                sections = createSections(personArray: dukePersons)
                 createAlert(title: "DONE!", message: "\(firstName) \(lastName) is found! Personal Information has beed updated.")
                 return true
             }
@@ -372,7 +373,8 @@ class DetailVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, 
         let newPerson: DukePerson = DukePerson(firstName: firstName, lastName: lastName, whereFrom: from, gender: gender, hobbies: hobbies, role: role, degree: degree , languages: languages, picture: personImageView.image ?? UIImage(imageLiteralResourceName: "logo"), team: team, netid: "", email: email, department: "", id: "", nextPage: "no", isFavourite: false)
         
         dukePersons.append(newPerson)
-        sections = updateSections()
+        dataEncoder()
+        sections = createSections(personArray: dukePersons)
         createAlert(title: "DONE!", message: "\(firstName) \(lastName) has been added!")
         return true
         
