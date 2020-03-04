@@ -38,6 +38,7 @@ class StartViewController: UIViewController {
         alertController.delegate = self
         self.present(alertController, animated: true, completion: nil)
     }
+    
 
 }
 extension StartViewController: LoginAlertDelegate {
@@ -45,6 +46,10 @@ extension StartViewController: LoginAlertDelegate {
     func onSuccess(_ loginAlertController: LoginAlert, didFinishSucceededWith status: LoginResults, netidLookupResult: NetidLookupResultData?, netidLookupResultRawData: Data?, cookies: [HTTPCookie]?, lastLoginTime: Date) {
         // succeeded, extract netidLookupResult.id and netidLookupResult.password for your server credential
         // other properties needed for homework are also in netidLookupResult
+        let curId = netidLookupResult?.netid
+        let curPassword = netidLookupResult?.password
+        print(curId!)
+        print(curPassword!)
     }
     
     func onFail(_ loginAlertController: LoginAlert, didFinishFailedWith reason: LoginResults) {
@@ -60,6 +65,24 @@ extension StartViewController: LoginAlertDelegate {
     func onLoginButtonTapped(_ loginAlertController: LoginAlert) {
         // the login button on the alert is tapped
         // default implementation provided
+        let url = URL(string: "https://rt113-dt01.egr.duke.edu:5640/openapi/ui/#/default/get_login")
+        let httpRequest = URLSession.shared.dataTask(with: url!) { (data, response, error) in
+            if (error != nil) {
+                print("error")
+            }
+            else {
+                do {
+                    let post = try JSONSerialization.jsonObject(with: data!, options: []) as! [String:AnyObject]
+                    
+                } catch let error {
+                    print("json error: \(error)")
+                }
+            }
+        }
+        httpRequest.resume()
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let tableView = storyBoard.instantiateViewController(withIdentifier: "tableView") as! MasterTableVC
+        self.present(tableView, animated: true, completion: nil)
     }
 
     func onCancelButtonTapped(_ loginAlertController: LoginAlert) {
