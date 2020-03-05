@@ -1,0 +1,3 @@
+.build/							usr/src/NewstandsServer
+terraform/scripts/install.sh	usr/src/NewstandsServer
+terraform/scripts/start.sh		usr/src/NewstandsServer
