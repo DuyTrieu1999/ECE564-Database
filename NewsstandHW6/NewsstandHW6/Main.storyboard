@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VdA-Ah-0nx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VdA-Ah-0nx">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -32,9 +32,6 @@
                                         <state key="normal" title="Log In">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
-                                        <connections>
-                                            <segue destination="oxx-2v-GZV" kind="show" id="uYC-wo-hXb"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -59,7 +56,7 @@
         <!--Spring 2020 - ECE 564-->
         <scene sceneID="Dpg-Hs-EV1">
             <objects>
-                <tableViewController id="oxx-2v-GZV" customClass="MasterTableVC" customModule="NewsstandHW6" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="tableView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="oxx-2v-GZV" customClass="MasterTableVC" customModule="NewsstandHW6" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="160" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="nc1-lq-hOt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -427,6 +424,14 @@
                                                     <outletCollection property="gestureRecognizers" destination="LZy-Nv-bv3" appends="YES" id="D3I-wK-VWf"/>
                                                 </connections>
                                             </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wH1-gk-TnE">
+                                                <rect key="frame" x="20" y="553" width="89" height="41"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                <state key="normal" title="Post">
+                                                    <color key="titleColor" systemColor="secondarySystemGroupedBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
@@ -468,6 +473,7 @@
                     <connections>
                         <outlet property="btnCancel" destination="8fH-uc-k75" id="jtD-GJ-bvP"/>
                         <outlet property="btnEdit" destination="nzW-ke-dJd" id="QJm-pi-F83"/>
+                        <outlet property="btnPost" destination="wH1-gk-TnE" id="L5o-Xp-pfZ"/>
                         <outlet property="cameraImageView" destination="x3B-hR-NSc" id="m3w-Kw-ZMf"/>
                         <outlet property="degreeField" destination="ULm-Og-XeF" id="MLa-rX-Gdv"/>
                         <outlet property="degreeLabel" destination="WlG-IE-JNA" id="I6C-0V-mlf"/>
@@ -506,14 +512,14 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1400" y="-650.22321428571422"/>
+            <point key="canvasLocation" x="1398.5507246376812" y="-650.22321428571422"/>
         </scene>
         <!--PageVC-->
         <scene sceneID="zEB-cM-tFa">
             <objects>
                 <viewController storyboardIdentifier="PageVC" id="4bF-Mt-GC9" customClass="PageVC" customModule="NewsstandHW6" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QKu-AT-1hd">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="3DS-xq-YTP"/>

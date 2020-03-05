@@ -76,6 +76,7 @@ func isAppAlreadylaunchedOnce() -> Bool {
 }
 
 func createDukePersons() -> [DukePerson]{
+
     var createPerson:[DukePerson]!
     if(isAppAlreadylaunchedOnce())
     {

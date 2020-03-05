@@ -1,0 +1,696 @@
+{
+  "basePath" : "\/",
+  "paths" : {
+    "\/entries" : {
+      "post" : {
+        "responses" : {
+          "200" : {
+            "schema" : {
+              "$ref" : "#\/definitions\/DukePersonEntry"
+            },
+            "description" : "successful response"
+          }
+        },
+        "consumes" : [
+          "application\/json"
+        ],
+        "parameters" : [
+          {
+            "schema" : {
+              "$ref" : "#\/definitions\/DukePersonEntry"
+            },
+            "required" : true,
+            "in" : "body",
+            "name" : "input"
+          }
+        ],
+        "produces" : [
+          "application\/json"
+        ]
+      },
+      "get" : {
+        "responses" : {
+          "200" : {
+            "schema" : {
+              "$ref" : "#\/definitions\/DukePersonEntry"
+            },
+            "description" : "successful response"
+          }
+        },
+        "consumes" : [
+          "application\/json"
+        ],
+        "parameters" : [
+          {
+            "required" : false,
+            "in" : "query",
+            "name" : "netid",
+            "type" : "string"
+          }
+        ],
+        "produces" : [
+          "application\/json"
+        ]
+      },
+      "delete" : {
+        "produces" : [
+          "application\/json"
+        ],
+        "consumes" : [
+          "application\/json"
+        ],
+        "responses" : {
+          "200" : {
+            "description" : "successful response"
+          }
+        }
+      }
+    },
+    "\/b64entries\/{id}" : {
+      "get" : {
+        "produces" : [
+          "application\/json"
+        ],
+        "consumes" : [
+          "application\/json"
+        ],
+        "parameters" : [
+          {
+            "in" : "path",
+            "name" : "id",
+            "type" : "string",
+            "required" : true
+          }
+        ],
+        "responses" : {
+          "200" : {
+            "description" : "successful response",
+            "schema" : {
+              "$ref" : "#\/definitions\/DukePersonBase64Entry"
+            }
+          }
+        }
+      }
+    },
+    "\/logout" : {
+      "get" : {
+        "produces" : [
+          "application\/json"
+        ],
+        "consumes" : [
+          "application\/json"
+        ],
+        "responses" : {
+          "200" : {
+            "schema" : {
+              "$ref" : "#\/definitions\/UserAuth"
+            },
+            "description" : "successful response"
+          }
+        }
+      }
+    },
+    "\/preview" : {
+      "get" : {
+        "produces" : [
+          "application\/json"
+        ],
+        "consumes" : [
+          "application\/json"
+        ],
+        "responses" : {
+          "200" : {
+            "description" : "successful response",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#\/definitions\/DukePersonEntryWeb"
+              }
+            }
+          }
+        }
+      }
+    },
+    "\/b64entries" : {
+      "post" : {
+        "responses" : {
+          "200" : {
+            "description" : "successful response",
+            "schema" : {
+              "$ref" : "#\/definitions\/DukePersonBase64Entry"
+            }
+          }
+        },
+        "consumes" : [
+          "application\/json"
+        ],
+        "parameters" : [
+          {
+            "schema" : {
+              "$ref" : "#\/definitions\/DukePersonBase64Entry"
+            },
+            "required" : true,
+            "in" : "body",
+            "name" : "input"
+          }
+        ],
+        "produces" : [
+          "application\/json"
+        ]
+      },
+      "get" : {
+        "responses" : {
+          "200" : {
+            "description" : "successful response",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#\/definitions\/DukePersonBase64Entry"
+              }
+            }
+          }
+        },
+        "consumes" : [
+          "application\/json"
+        ],
+        "parameters" : [
+          {
+            "required" : false,
+            "in" : "query",
+            "name" : "netid",
+            "type" : "string"
+          }
+        ],
+        "produces" : [
+          "application\/json"
+        ]
+      }
+    },
+    "\/entries_anonym\/{id}" : {
+      "get" : {
+        "responses" : {
+          "200" : {
+            "schema" : {
+              "$ref" : "#\/definitions\/DukePersonEntry"
+            },
+            "description" : "successful response"
+          }
+        },
+        "consumes" : [
+          "application\/json"
+        ],
+        "parameters" : [
+          {
+            "required" : true,
+            "in" : "path",
+            "name" : "id",
+            "type" : "string"
+          }
+        ],
+        "produces" : [
+          "application\/json"
+        ]
+      },
+      "put" : {
+        "responses" : {
+          "200" : {
+            "schema" : {
+              "$ref" : "#\/definitions\/DukePersonEntry"
+            },
+            "description" : "successful response"
+          }
+        },
+        "consumes" : [
+          "application\/json"
+        ],
+        "parameters" : [
+          {
+            "required" : true,
+            "in" : "path",
+            "name" : "id",
+            "type" : "string"
+          },
+          {
+            "schema" : {
+              "$ref" : "#\/definitions\/DukePersonEntry"
+            },
+            "required" : true,
+            "in" : "body",
+            "name" : "input"
+          }
+        ],
+        "produces" : [
+          "application\/json"
+        ]
+      },
+      "delete" : {
+        "responses" : {
+          "200" : {
+            "description" : "successful response"
+          }
+        },
+        "consumes" : [
+          "application\/json"
+        ],
+        "parameters" : [
+          {
+            "required" : true,
+            "in" : "path",
+            "name" : "id",
+            "type" : "string"
+          }
+        ],
+        "produces" : [
+          "application\/json"
+        ]
+      }
+    },
+    "\/user" : {
+      "post" : {
+        "responses" : {
+          "200" : {
+            "schema" : {
+              "$ref" : "#\/definitions\/UserAuth"
+            },
+            "description" : "successful response"
+          }
+        },
+        "consumes" : [
+          "application\/json"
+        ],
+        "parameters" : [
+          {
+            "schema" : {
+              "$ref" : "#\/definitions\/UserAuth"
+            },
+            "required" : true,
+            "in" : "body",
+            "name" : "input"
+          }
+        ],
+        "produces" : [
+          "application\/json"
+        ]
+      }
+    },
+    "\/entries_anonym" : {
+      "get" : {
+        "responses" : {
+          "200" : {
+            "schema" : {
+              "items" : {
+                "$ref" : "#\/definitions\/DukePersonEntry"
+              },
+              "type" : "array"
+            },
+            "description" : "successful response"
+          }
+        },
+        "consumes" : [
+          "application\/json"
+        ],
+        "parameters" : [
+          {
+            "required" : false,
+            "in" : "query",
+            "name" : "netid",
+            "type" : "string"
+          }
+        ],
+        "produces" : [
+          "application\/json"
+        ]
+      },
+      "post" : {
+        "responses" : {
+          "200" : {
+            "schema" : {
+              "$ref" : "#\/definitions\/DukePersonEntry"
+            },
+            "description" : "successful response"
+          }
+        },
+        "consumes" : [
+          "application\/json"
+        ],
+        "parameters" : [
+          {
+            "schema" : {
+              "$ref" : "#\/definitions\/DukePersonEntry"
+            },
+            "required" : true,
+            "in" : "body",
+            "name" : "input"
+          }
+        ],
+        "produces" : [
+          "application\/json"
+        ]
+      }
+    },
+    "\/user\/{id}" : {
+      "put" : {
+        "responses" : {
+          "200" : {
+            "description" : "successful response",
+            "schema" : {
+              "$ref" : "#\/definitions\/UserAuth"
+            }
+          }
+        },
+        "consumes" : [
+          "application\/json"
+        ],
+        "parameters" : [
+          {
+            "required" : true,
+            "in" : "path",
+            "name" : "id",
+            "type" : "string"
+          },
+          {
+            "schema" : {
+              "$ref" : "#\/definitions\/UserAuth"
+            },
+            "required" : true,
+            "in" : "body",
+            "name" : "input"
+          }
+        ],
+        "produces" : [
+          "application\/json"
+        ]
+      },
+      "delete" : {
+        "responses" : {
+          "200" : {
+            "description" : "successful response"
+          }
+        },
+        "consumes" : [
+          "application\/json"
+        ],
+        "parameters" : [
+          {
+            "required" : true,
+            "in" : "path",
+            "name" : "id",
+            "type" : "string"
+          }
+        ],
+        "produces" : [
+          "application\/json"
+        ]
+      }
+    },
+    "\/entries\/{id}" : {
+      "get" : {
+        "responses" : {
+          "200" : {
+            "schema" : {
+              "$ref" : "#\/definitions\/DukePersonEntry"
+            },
+            "description" : "successful response"
+          }
+        },
+        "consumes" : [
+          "application\/json"
+        ],
+        "parameters" : [
+          {
+            "required" : true,
+            "in" : "path",
+            "name" : "id",
+            "type" : "string"
+          }
+        ],
+        "produces" : [
+          "application\/json"
+        ]
+      },
+      "delete" : {
+        "responses" : {
+          "200" : {
+            "description" : "successful response"
+          }
+        },
+        "consumes" : [
+          "application\/json"
+        ],
+        "parameters" : [
+          {
+            "required" : true,
+            "in" : "path",
+            "name" : "id",
+            "type" : "string"
+          }
+        ],
+        "produces" : [
+          "application\/json"
+        ]
+      },
+      "put" : {
+        "responses" : {
+          "200" : {
+            "schema" : {
+              "$ref" : "#\/definitions\/DukePersonEntry"
+            },
+            "description" : "successful response"
+          }
+        },
+        "consumes" : [
+          "application\/json"
+        ],
+        "parameters" : [
+          {
+            "required" : true,
+            "in" : "path",
+            "name" : "id",
+            "type" : "string"
+          },
+          {
+            "schema" : {
+              "$ref" : "#\/definitions\/DukePersonEntry"
+            },
+            "required" : true,
+            "in" : "body",
+            "name" : "input"
+          }
+        ],
+        "produces" : [
+          "application\/json"
+        ]
+      }
+    },
+    "\/picture" : {
+      "get" : {
+        "responses" : {
+          "200" : {
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#\/definitions\/Picture"
+              }
+            },
+            "description" : "successful response"
+          }
+        },
+        "consumes" : [
+          "application\/json"
+        ],
+        "parameters" : [
+          {
+            "required" : false,
+            "in" : "query",
+            "name" : "netid",
+            "type" : "string"
+          }
+        ],
+        "produces" : [
+          "application\/json"
+        ]
+      },
+      "post" : {
+        "responses" : {
+          "200" : {
+            "schema" : {
+              "$ref" : "#\/definitions\/Picture"
+            },
+            "description" : "successful response"
+          }
+        },
+        "consumes" : [
+          "application\/json"
+        ],
+        "parameters" : [
+          {
+            "schema" : {
+              "$ref" : "#\/definitions\/PictureJSON"
+            },
+            "required" : true,
+            "in" : "body",
+            "name" : "input"
+          }
+        ],
+        "produces" : [
+          "application\/json"
+        ]
+      },
+      "delete" : {
+        "responses" : {
+          "200" : {
+            "description" : "successful response"
+          }
+        },
+        "consumes" : [
+          "application\/json"
+        ],
+        "produces" : [
+          "application\/json"
+        ]
+      }
+    },
+    "\/login" : {
+      "get" : {
+        "responses" : {
+          "200" : {
+            "description" : "successful response",
+            "schema" : {
+              "$ref" : "#\/definitions\/UserAuth"
+            }
+          }
+        },
+        "consumes" : [
+          "application\/json"
+        ],
+        "produces" : [
+          "application\/json"
+        ]
+      }
+    },
+    "\/health" : {
+      "get" : {
+        "produces" : [
+          "application\/json"
+        ],
+        "consumes" : [
+          "application\/json"
+        ],
+        "responses" : {
+          "200" : {
+            "schema" : {
+              "$ref" : "#\/definitions\/Status"
+            },
+            "description" : "successful response"
+          }
+        }
+      }
+    }
+  },
+  "schemes" : [
+    "https"
+  ],
+  "info" : {
+    "description" : "Generated by Kitura",
+    "title" : "Kitura Project",
+    "version" : "1.0"
+  },
+  "swagger" : "2.0",
+  "definitions": {
+    "UserAuth": {
+      "type": "object",
+      "required": ["password","id"],
+      "properties": {
+        "id": {"type":"string"},
+        "password": {"type":"string"}
+      }
+    },
+    "Status": {
+      "type": "object",
+      "required": ["details","timestamp","status"],
+      "properties": {
+        "status": {"type":"string"},
+        "details": {"type":"array","items":{"type":"string"}},
+        "timestamp": {"type":"string"}
+      }
+    },
+    "Picture": {
+      "type": "object",
+      "required": ["netid","path","size","md5"],
+      "properties": {
+        "id": {"type":"string"},
+        "netid": {"type":"string"},
+        "path": {"type":"string"},
+        "size": {"type":"integer"},
+        "md5": {"type":"string"}
+      }
+    },
+    "DukePersonBase64Entry": {
+      "type": "object",
+      "required": ["team","degree","email","netid","lastname","role","hobbies","gender","wherefrom","firstname","languages","department"],
+      "properties": {
+        "id": {"type":"string"},
+        "netid": {"type":"string"},
+        "firstname": {"type":"string"},
+        "lastname": {"type":"string"},
+        "wherefrom": {"type":"string"},
+        "gender": {"type":"string"},
+        "role": {"type":"string"},
+        "degree": {"type":"string"},
+        "team": {"type":"string"},
+        "hobbies": {"type":"array","items":{"type":"string"}},
+        "languages": {"type":"array","items":{"type":"string"}},
+        "department": {"type":"string"},
+        "email": {"type":"string"},
+        "picture": {"type":"string"}
+      }
+    },
+    "DukePersonEntryWeb": {
+      "type": "object",
+      "required": ["netid","picture","date","email","user","firstname","displayTime","backgroundColorCode","displayDate","role","lastname"],
+      "properties": {
+        "id": {"type":"string"},
+        "date": {"type":"number"},
+        "firstname": {"type":"string"},
+        "lastname": {"type":"string"},
+        "role": {"type":"string"},
+        "netid": {"type":"string"},
+        "picture": {"type":"string"},
+        "email": {"type":"string"},
+        "displayDate": {"type":"string"},
+        "displayTime": {"type":"string"},
+        "backgroundColorCode": {"type":"string"},
+        "user": {"type":"string"}
+      }
+    },
+    "PictureJSON": {
+      "type": "object",
+      "required": ["netid","file_extension","file_entity"],
+      "properties": {
+        "netid": {"type":"string"},
+        "file_entity": {"type":"string"},
+        "file_extension": {"type":"string"}
+      }
+    },
+    "DukePersonEntry": {
+      "type": "object",
+      "required": ["wherefrom","picture","lastname","firstname","languages","team","email","degree","gender","hobbies","department","role","netid"],
+      "properties": {
+        "id": {"type":"string"},
+        "netid": {"type":"string"},
+        "firstname": {"type":"string"},
+        "lastname": {"type":"string"},
+        "wherefrom": {"type":"string"},
+        "gender": {"type":"string"},
+        "role": {"type":"string"},
+        "degree": {"type":"string"},
+        "team": {"type":"string"},
+        "hobbies": {"type":"array","items":{"type":"string"}},
+        "languages": {"type":"array","items":{"type":"string"}},
+        "department": {"type":"string"},
+        "email": {"type":"string"},
+        "picture": {"type":"string"}
+      }
+    }
+  }
+}

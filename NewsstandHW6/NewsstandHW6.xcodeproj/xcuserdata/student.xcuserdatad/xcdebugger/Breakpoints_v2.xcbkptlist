@@ -126,9 +126,9 @@
             filePath = "NewsstandHW6/DataModel/DataGroup.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "247"
-            endingLineNumber = "247"
-            landmarkName = "initializeDukePerson()"
+            startingLineNumber = "236"
+            endingLineNumber = "236"
+            landmarkName = "getPersonData(personid:)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -158,8 +158,8 @@
             filePath = "NewsstandHW6/DataModel/DataGroup.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "218"
-            endingLineNumber = "218"
+            startingLineNumber = "207"
+            endingLineNumber = "207"
             landmarkName = "getPersonData(personid:)"
             landmarkType = "9">
          </BreakpointContent>
@@ -174,8 +174,8 @@
             filePath = "NewsstandHW6/DataModel/DataGroup.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "219"
-            endingLineNumber = "219"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
             landmarkName = "getPersonData(personid:)"
             landmarkType = "9">
          </BreakpointContent>
@@ -222,8 +222,8 @@
             filePath = "NewsstandHW6/DataModel/DataGroup.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "226"
-            endingLineNumber = "226"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
             landmarkName = "getPersonData(personid:)"
             landmarkType = "9">
          </BreakpointContent>
@@ -238,8 +238,8 @@
             filePath = "NewsstandHW6/DataModel/DataGroup.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "304"
-            endingLineNumber = "304"
+            startingLineNumber = "293"
+            endingLineNumber = "293"
             landmarkName = "uploadnewperson(newperson:)"
             landmarkType = "9">
          </BreakpointContent>
@@ -254,9 +254,9 @@
             filePath = "NewsstandHW6/DataModel/DataGroup.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "200"
-            endingLineNumber = "200"
-            landmarkName = "getPersonData(personid:)"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
+            landmarkName = "stringtoGender(stringgender:)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
