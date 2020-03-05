@@ -86,6 +86,7 @@ func downloadServer()->[DukePerson]
     var savePost = NSDictionary()
     var dukePersons:[DukePerson]=[]
     var idList:[String]=[]
+    let semaphore = DispatchSemaphore(value: 0)
     let url = URL(string: "https://rt113-dt01.egr.duke.edu:5640/preview")
             let httprequest = URLSession.shared.dataTask(with: url!){ (data, response, error) in
                 if error != nil
@@ -104,6 +105,7 @@ func downloadServer()->[DukePerson]
                             print(netid)
                             idList.append(netid)
                         }
+                        semaphore.signal()
                     } catch let error {
                         print("json error: \(error)")
                     }
@@ -111,10 +113,7 @@ func downloadServer()->[DukePerson]
 
             }
     httprequest.resume()
-    do
-    {
-        sleep(1)
-    }
+    semaphore.wait()
     for single_id in idList
     {
         dukePersons.append(getPersonData(personid: single_id))
