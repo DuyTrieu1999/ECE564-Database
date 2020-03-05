@@ -208,7 +208,8 @@ class DetailVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, 
     }
     /// Post toogler
     @objc func tooglePost(sender: UIButton){
-        let url = URL(string: "https://rt113-dt01.egr.duke.edu:5640/openapi/ui/#/default/put_entries__id_")
+        print(person?.id)
+        let url = URL(string: "https://rt113-dt01.egr.duke.edu:5640/entries" + (person?.id!)!)
         guard let requestURL = url else { fatalError() }
         var request = URLRequest(url: requestURL)
         request.httpMethod = "PUT"

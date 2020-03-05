@@ -65,11 +65,12 @@ extension StartViewController: LoginAlertDelegate {
     func inProgress(_ loginAlertController: LoginAlert, didSubmittedWith status: LoginResults) {
         // this method will get called for each step in progress.
         // default implementation provided
-        let url = URL(string: "https://rt113-dt01.egr.duke.edu:5640/client")
+        let url = URL(string: "https://rt113-dt01.egr.duke.edu:5640/user")
         guard let requestURL = url else { fatalError() }
         var request = URLRequest(url: requestURL)
-        request.httpMethod = "GET"
-        //request.setValue(<#T##value: String?##String?#>, forHTTPHeaderField: <#T##String#>)
+        request.httpMethod = "POST"
+        let postString = "id=\(String(describing: currNetID))&password=\(String(describing: currPassword))"
+        request.httpBody = postString.data(using: String.Encoding.utf8)
         let httpRequest = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 print("Error took place \(error)")
