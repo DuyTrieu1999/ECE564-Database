@@ -82,7 +82,7 @@ func createDukePersons() -> [DukePerson]{
        }
        else{
            dukePersons = initializeDukePerson()
-           dataEncoder()
+          // dataEncoder()
        }
        return dukePersons
 }
