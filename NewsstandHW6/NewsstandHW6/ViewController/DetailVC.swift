@@ -180,7 +180,7 @@ class DetailVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, 
     
     /// set button UI
     func setButton(){
-        if person?.netid == currNetID {
+        if person?.netid == currNetID  || person?.netid == nil {
              btnCancel.isHidden = false
              btnEdit.isHidden = false
              btnPost.isHidden = false
