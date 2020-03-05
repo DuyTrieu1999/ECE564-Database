@@ -77,15 +77,151 @@ func isAppAlreadylaunchedOnce() -> Bool {
 
 func createDukePersons() -> [DukePerson]{
     let dukePersons:[DukePerson]!
-       if isAppAlreadylaunchedOnce() {
-           dukePersons = dataDecoder()
-       }
-       else{
-           dukePersons = initializeDukePerson()
-       }
-       return dukePersons
+     dukePersons = downloadServer()
+    return dukePersons
 }
 
+func downloadServer()->[DukePerson]
+{
+    var savePost = NSDictionary()
+    var dukePersons:[DukePerson]=[]
+    var idList:[String]=[]
+    let url = URL(string: "https://rt113-dt01.egr.duke.edu:5640/preview")
+            let httprequest = URLSession.shared.dataTask(with: url!){ (data, response, error) in
+                if error != nil
+                {
+                    print("error calling in request all the persons!")
+                }
+                else
+                {
+                    do {
+                        let post = try JSONSerialization.jsonObject(with: data!, options: []) as! [[String:AnyObject]]
+                        for eachpost in post
+                        {
+                            savePost = eachpost as NSDictionary
+                            print(savePost)
+                            let netid = eachpost["id"] as! String
+                            print(netid)
+                            idList.append(netid)
+                        }
+                    } catch let error {
+                        print("json error: \(error)")
+                    }
+                }
+
+            }
+    httprequest.resume()
+    do
+    {
+        sleep(1)
+    }
+    for single_id in idList
+    {
+        dukePersons.append(getPersonData(personid: single_id))
+    }
+    return dukePersons
+}
+
+func stringtoRole(role:String) -> DukeRole
+{
+    if(role == "Student")
+    {
+        return DukeRole.Student
+    }
+    else if(role == "Professor")
+    {
+        return DukeRole.Professor
+    }
+    else if(role == "TA")
+    {
+        return DukeRole.TA
+    }
+    else
+    {
+        return DukeRole.Student
+    }
+}
+
+func stringtoDegree(degree: String) ->DegreeType
+{
+    if(degree == "MS")
+    {
+        return DegreeType.MS
+    }
+    else if(degree == "PhD")
+    {
+        return DegreeType.PhD
+    }
+    else if(degree == "MEng")
+    {
+        return DegreeType.MEng
+    }
+    else if(degree == "BS")
+    {
+        return DegreeType.BS
+    }
+    else
+    {
+        return DegreeType.MS
+    }
+}
+
+func stringtoGender(stringgender:String) -> Gender
+{
+    if(stringgender == "Male")
+    {
+        return Gender.Male
+    }
+    else
+    {
+        return Gender.Female
+    }
+}
+
+func getPersonData(personid:String) -> DukePerson
+{
+    var newperson:DukePerson?
+    var saveperson=NSDictionary()
+        let single_url = URL(string: "https://rt113-dt01.egr.duke.edu:5640/b64entries/"+personid)
+    _ = URLSession.shared.dataTask(with: single_url!){ (data, response, error) in
+                    if error != nil
+                    {
+                        print("error calling in request all the persons!")
+                    }
+                    else
+                    {
+                        do {
+                            let post = try JSONSerialization.jsonObject(with: data!, options: []) as! [String:AnyObject]
+                            saveperson = post as NSDictionary
+                            DispatchQueue.main.async {
+                                let role=saveperson["role"] as! String
+                                let team=saveperson["team"] as! String
+                                let netid = saveperson["netid"] as! String
+                                let lastname = saveperson["lastname"] as! String
+                                let firstname = saveperson["firstname"] as! String
+                                let wherefrom = saveperson["wherefrom"] as! String
+                                let languages = saveperson["languages"] as! [String]
+                                let id=saveperson["id"] as! String
+                                let email=saveperson["email"] as! String
+                                let hobbies=saveperson["hobbies"] as! [String]
+                                let gender=saveperson["gender"] as! String
+                                let department=saveperson["department"] as!String
+                                let image64=saveperson["picture"] as! String
+                                let dataDecoded:Data=Data(base64Encoded: image64, options:.ignoreUnknownCharacters)!
+                                let picture=UIImage(data:dataDecoded as Data)!
+                            newperson = DukePerson(firstName: firstname, lastName: lastname, whereFrom: wherefrom, gender: stringtoGender(stringgender:gender), hobbies: hobbies, role: stringtoRole(role: role), degree: .BS, languages: languages, picture: picture, team: team, netid: netid, email: email, department: department, id: id, nextPage:"no", isFavourite: false)
+                            }
+                        } catch let error {
+                            print("json error: \(error)")
+                        }
+                    }
+    }.resume()
+    do
+    {
+        sleep(500)
+    }
+    return newperson!
+}
 func initializeDukePerson() -> [DukePerson] {
     // dukePerson entries
     let myself = DukePerson(firstName: "Yuqin", lastName: "Shen", whereFrom: "Guangdong, China", gender: .Female, hobbies: ["yogo", "reading", "Pili dramas"], role: .Student, degree: .MS, languages: ["C++", "Python", "Java"], picture: UIImage(imageLiteralResourceName: "myself"), team: "Newsstand", netid: "ys238", email: "ys238@duke.edu", department: "Pratt School of Engineering", id: "", nextPage: "Reading", isFavourite: false)
