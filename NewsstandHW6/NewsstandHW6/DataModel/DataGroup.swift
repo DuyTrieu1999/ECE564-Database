@@ -181,6 +181,7 @@ func stringtoGender(stringgender:String) -> Gender
 func getPersonData(personid:String) -> DukePerson
 {
     var newperson:DukePerson?
+    let semaphore = DispatchSemaphore(value: 0)
     var saveperson=NSDictionary()
         let single_url = URL(string: "https://rt113-dt01.egr.duke.edu:5640/b64entries/"+personid)
     _ = URLSession.shared.dataTask(with: single_url!){ (data, response, error) in
@@ -193,7 +194,7 @@ func getPersonData(personid:String) -> DukePerson
                         do {
                             let post = try JSONSerialization.jsonObject(with: data!, options: []) as! [String:AnyObject]
                             saveperson = post as NSDictionary
-                            DispatchQueue.main.async {
+//                            DispatchQueue.main.async {
                                 let role=saveperson["role"] as! String
                                 let team=saveperson["team"] as! String
                                 let netid = saveperson["netid"] as! String
@@ -207,19 +208,20 @@ func getPersonData(personid:String) -> DukePerson
                                 let gender=saveperson["gender"] as! String
                                 let department=saveperson["department"] as!String
                                 let image64=saveperson["picture"] as! String
+
                                 let dataDecoded:Data=Data(base64Encoded: image64, options:.ignoreUnknownCharacters)!
+             
                                 let picture=UIImage(data:dataDecoded as Data)!
+             
                             newperson = DukePerson(firstName: firstname, lastName: lastname, whereFrom: wherefrom, gender: stringtoGender(stringgender:gender), hobbies: hobbies, role: stringtoRole(role: role), degree: .BS, languages: languages, picture: picture, team: team, netid: netid, email: email, department: department, id: id, nextPage:"no", isFavourite: false)
-                            }
+                                semaphore.signal()
+//                            }
                         } catch let error {
                             print("json error: \(error)")
                         }
                     }
     }.resume()
-    do
-    {
-        sleep(500)
-    }
+    semaphore.wait()
     return newperson!
 }
 func initializeDukePerson() -> [DukePerson] {
