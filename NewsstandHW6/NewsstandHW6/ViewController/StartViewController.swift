@@ -8,10 +8,10 @@
 
 import UIKit
 import shibauthframework2019
-
+var currNetID: String?
 class StartViewController: UIViewController {
     /// curr netid
-    var currNetID: String?
+   // var currNetID: String?
     var currPassword: String?
     /// button and logo
     @IBOutlet var LogoImg: UIImageView!
@@ -91,7 +91,7 @@ extension StartViewController: LoginAlertDelegate {
         // default implementation provided
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let tableView = storyBoard.instantiateViewController(withIdentifier: "tableView") as! MasterTableVC
-        tableView.curNetID = currNetID
+        //tableView.curNetID = currNetID
         navigationController?.pushViewController(tableView,
                animated: true)
         //self.present(tableView, animated: true, completion: nil)
