@@ -241,16 +241,16 @@ func getPersonData(personid:String) -> DukePerson
 }
 func initializeDukePerson() -> [DukePerson] {
     // dukePerson entries
-    let myself = DukePerson(firstName: "Yuqin", lastName: "Shen", whereFrom: "Guangdong, China", gender: .Female, hobbies: ["yogo", "reading", "Pili dramas"], role: .Student, degree: .MS, languages: ["C++", "Python", "Java"], picture: UIImage(imageLiteralResourceName: "myself"), team: "Newsstand", netid: "ys238", email: "ys238@duke.edu", department: "Pratt School of Engineering", id: "", nextPage: "Reading", isFavourite: false)
-    let professor =  DukePerson(firstName: "Ric", lastName: "Telford", whereFrom: "Chatham County, NC", gender: .Male, hobbies: ["swimming", "biking", "hiking"], role: .Professor, degree: .BS, languages: ["Swift", "C", "C++"], picture: UIImage(imageLiteralResourceName: "Ric"), team: "Professor", netid: "rt113", email: "rt113@duke.edu", department: "Pratt School of Engineering", id: "", nextPage: "no", isFavourite: false)
-    let TA1 = DukePerson(firstName: "Jingru", lastName: "Gao", whereFrom: "Shanghai, China", gender: .Female, hobbies: ["traveling", "reading", "movies"], role: .TA, degree: .MS, languages: ["Swift", "C++", "Python"], picture: UIImage(imageLiteralResourceName: "Jingru"), team: "TA", netid: "jg404", email: "jg404@duke.edu", department: "Pratt School of Engineering", id: "", nextPage: "no", isFavourite: false)
-    let TA2 = DukePerson(firstName: "Haohong", lastName: "Zhao", whereFrom: "Hebei, China", gender: .Male, hobbies: ["reading", "jogging"], role: .Student, degree: .MS, languages: ["Swift", "Python"], picture: UIImage(imageLiteralResourceName: "haohong"), team: "TA", netid: "hz147", email: "hz147@duke.edu", department: "Pratt School of Engineering", id: "", nextPage: "no", isFavourite: false)
+    let myself = DukePerson(firstName: "Yuqin", lastName: "Shen", whereFrom: "Guangdong, China", gender: .Female, hobbies: ["yogo", "reading", "Pili dramas"], role: .Student, degree: .MS, languages: ["C++", "Python", "Java"], picture: UIImage(imageLiteralResourceName: "myself"), team: "Newsstand", netid: "ys238", email: "ys238@duke.edu", department: "Pratt School of Engineering", id: "ys238", nextPage: "Reading", isFavourite: false)
+    let professor =  DukePerson(firstName: "Ric", lastName: "Telford", whereFrom: "Chatham County, NC", gender: .Male, hobbies: ["swimming", "biking", "hiking"], role: .Professor, degree: .BS, languages: ["Swift", "C", "C++"], picture: UIImage(imageLiteralResourceName: "Ric"), team: "Professor", netid: "rt113", email: "rt113@duke.edu", department: "Pratt School of Engineering", id: "rt113", nextPage: "no", isFavourite: false)
+    let TA1 = DukePerson(firstName: "Jingru", lastName: "Gao", whereFrom: "Shanghai, China", gender: .Female, hobbies: ["traveling", "reading", "movies"], role: .TA, degree: .MS, languages: ["Swift", "C++", "Python"], picture: UIImage(imageLiteralResourceName: "Jingru"), team: "TA", netid: "jg404", email: "jg404@duke.edu", department: "Pratt School of Engineering", id: "jg404", nextPage: "no", isFavourite: false)
+    let TA2 = DukePerson(firstName: "Haohong", lastName: "Zhao", whereFrom: "Hebei, China", gender: .Male, hobbies: ["reading", "jogging"], role: .Student, degree: .MS, languages: ["Swift", "Python"], picture: UIImage(imageLiteralResourceName: "haohong"), team: "TA", netid: "hz147", email: "hz147@duke.edu", department: "Pratt School of Engineering", id: "hz147", nextPage: "no", isFavourite: false)
 
     // add more two persons
 
-    let CongLi: DukePerson = DukePerson(firstName: "Cong", lastName: "Li", whereFrom: "Shanxi, China", gender: .Male, hobbies: ["traveling", "reading"], role: .Student, degree: .MS, languages: ["C++", "Java"], picture: UIImage(imageLiteralResourceName: "congli"), team: "Newsstand", netid: "ym132", email: "ym132@duke.edu", department: "Pratt School of Engineering", id: "", nextPage: "Swimming", isFavourite: false)
+    let CongLi: DukePerson = DukePerson(firstName: "Cong", lastName: "Li", whereFrom: "Shanxi, China", gender: .Male, hobbies: ["traveling", "reading"], role: .Student, degree: .MS, languages: ["C++", "Java"], picture: UIImage(imageLiteralResourceName: "congli"), team: "Newsstand", netid: "cl518", email: "cl518@duke.edu", department: "Pratt School of Engineering", id: "cl518", nextPage: "Swimming", isFavourite: false)
     let QiruiHe: DukePerson = DukePerson(firstName: "Qirui", lastName: "He", whereFrom: "Guangxi, China", gender: .Male, hobbies: ["Basketball"], role: .Student, degree: .MS, languages: ["C++", "Python", "Java"], picture: UIImage(imageLiteralResourceName: "qirui"), team: "Newsstand", netid: "qh37", email: "qh37@duke.edu", department: "Pratt School of Engineering", id: "qh37", nextPage: "Qirui", isFavourite: false)
-    let TrieuDuy: DukePerson = DukePerson(firstName: "Trieu", lastName: "Duy", whereFrom: "Hanoi, Vietnam", gender: .Male, hobbies: ["traveling", "cooking", "coding"], role: .Student, degree: .BS, languages: ["JS", "Python", "Java"], picture: UIImage(imageLiteralResourceName: "duytrieu"), team: "Newsstand", netid: "dvt5", email: "dvt5@duke.edu", department: "Trinity School", id: "", nextPage: "world", isFavourite: false)
+    let TrieuDuy: DukePerson = DukePerson(firstName: "Trieu", lastName: "Duy", whereFrom: "Hanoi, Vietnam", gender: .Male, hobbies: ["traveling", "cooking", "coding"], role: .Student, degree: .BS, languages: ["JS", "Python", "Java"], picture: UIImage(imageLiteralResourceName: "duytrieu"), team: "Newsstand", netid: "dvt5", email: "dvt5@duke.edu", department: "Trinity School", id: "dvt5", nextPage: "world", isFavourite: false)
     let dukePersons: [DukePerson] = [myself, professor, TA1, TA2, CongLi, QiruiHe, TrieuDuy]
     return dukePersons
 }
@@ -296,8 +296,9 @@ func uploadnewperson(newperson: DukePerson)
         }
         else
         {
-            if let response = response as? HTTPURLResponse {
+            if let response = response as? HTTPURLResponse{
               print("Response HTTP Status code: \(response.statusCode)")
+                print(newperson.firstName)
             }
     
             if let data = data, let dataString = String(data: data, encoding: .utf8) {
@@ -308,10 +309,31 @@ func uploadnewperson(newperson: DukePerson)
         }
         
     }.resume()
-    
 
 }
-
+//
+//func tooglePost(person:DukePerson){
+//    let url = URL(string: "https://rt113-dt01.egr.duke.edu:5640/entries")
+//        guard let requestURL = url else { fatalError() }
+//        var request = URLRequest(url: requestURL)
+//        request.httpMethod = "POST"
+//    let picImage = person.picture
+//    let picImageData: Data = picImage.jpegData(compressionQuality: 0.2)!
+//        let picBase64 = picImageData.base64EncodedString()
+//    let postString = "id = \(String(describing: person.id))&netid = \(String(describing: person.netid))&firstname=\(String(describing: person.firstName))&lastname=\(String(describing: person.lastName))&wherefrom=\(String(describing: person.whereFrom))&gender=\(String(describing: person.gender.description()))&role=\(String(describing: person.role.description()))&degree=\(String(describing: person.degree.description()))&team=\(String(describing: person.team))&hobbies=\(String(describing: person.hobbies))&languages=\(String(describing: person.languages))&department=\(String(describing: person.department))&email=\(String(describing: person.email))&picture=\(String(describing: picBase64))"
+//        request.httpBody = postString.data(using: String.Encoding.utf8)
+//        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+//            if let error = error {
+//                print("Error took place \(error)")
+//                return
+//            }
+//            if let data = data, let dataString = String(data: data, encoding: .utf8) {
+//                print("Response data string:\n \(dataString)")
+//            }
+//        }
+//        task.resume()
+//    }
+//
 
 
 
