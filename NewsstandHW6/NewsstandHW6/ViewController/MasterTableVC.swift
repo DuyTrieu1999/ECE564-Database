@@ -172,7 +172,8 @@ class MasterTableVC: UITableViewController {
                  sections[indexPath.section].personList.remove(at:indexPath.row)
              }
             self.tableView.deleteRows(at: [indexPath], with: .fade)
-            sections = updateSections()
+            dataEncoder()
+            sections = createSections(personArray: dukePersons)
             self.tableView.reloadData()
           }
           action.backgroundColor = lightBlue
@@ -198,7 +199,8 @@ class MasterTableVC: UITableViewController {
             for dukeperson in dukePersons {
                 if dukeperson.firstName == personFavourite.firstName && dukeperson.lastName == personFavourite.lastName {
                     dukeperson.isFavourite = !dukeperson.isFavourite
-                    sections = updateSections()
+                    dataEncoder()
+                    sections = createSections(personArray: dukePersons)
                     break
                 }
             }
@@ -211,13 +213,11 @@ class MasterTableVC: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        sections = updateSections()
         self.tableView.reloadData()
     }
     
     // segue back to home function
      @IBAction func unwindToHome(_ sender: UIStoryboardSegue){
-        sections = updateSections()
         self.tableView.reloadData()
     }
     
