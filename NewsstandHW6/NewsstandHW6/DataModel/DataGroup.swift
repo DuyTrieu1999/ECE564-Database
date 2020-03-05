@@ -76,15 +76,30 @@ func isAppAlreadylaunchedOnce() -> Bool {
 }
 
 func createDukePersons() -> [DukePerson]{
-    let dukePersons:[DukePerson]!
-     dukePersons = downloadServer()
-    return dukePersons
+    var createPerson:[DukePerson]!
+    if(isAppAlreadylaunchedOnce())
+    {
+        createPerson=dataDecoder()
+    }
+    else
+    {
+        createPerson = downloadServer()
+        //let initperson = initializeDukePerson()
+        //createPerson.append(contentsOf: initperson)
+        //dataEncoder()
+        for i in initializeDukePerson()
+        {
+            uploadnewperson(newperson: i)
+        }
+        
+    }
+    return createPerson
 }
 
 func downloadServer()->[DukePerson]
 {
     var savePost = NSDictionary()
-    var dukePersons:[DukePerson]=[]
+    var downloadPerson:[DukePerson]=[]
     var idList:[String]=[]
     let semaphore = DispatchSemaphore(value: 0)
     let url = URL(string: "https://rt113-dt01.egr.duke.edu:5640/preview")
@@ -116,9 +131,9 @@ func downloadServer()->[DukePerson]
     semaphore.wait()
     for single_id in idList
     {
-        dukePersons.append(getPersonData(personid: single_id))
+       downloadPerson.append(getPersonData(personid: single_id))
     }
-    return dukePersons
+    return downloadPerson
 }
 
 func stringtoRole(role:String) -> DukeRole
@@ -238,11 +253,63 @@ func initializeDukePerson() -> [DukePerson] {
     let dukePersons: [DukePerson] = [myself, professor, TA1, TA2, CongLi, QiruiHe, TrieuDuy]
     return dukePersons
 }
-
 var dukePersons:[DukePerson] = createDukePersons()
 var sections: [GroupSection] = createSections(personArray: dukePersons)
 
+func uploadnewperson(newperson: DukePerson)
+{
+    
+    let url=URL(string:"https://rt113-dt01.egr.duke.edu:5640/entries")
+    guard let requesturl = url else {fatalError()}
+    var request = URLRequest(url: requesturl)
+    request.httpMethod = "POST"
+    request.setValue("application/json",forHTTPHeaderField: "Accept")
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    let imgData:Data = newperson.picture.jpegData(compressionQuality: 0.2)!
+    //let imgData:Data = newperson.picture.pngData()!
+    let img_64data:String=imgData.base64EncodedString(options: .lineLength64Characters)
+    let newdictionary: [String: Any] =
+    [
+    "id": newperson.id,
+    "netid": newperson.netid,
+    "firstname": newperson.firstName,
+    "lastname": newperson.lastName,
+    "wherefrom": newperson.whereFrom,
+    "gender": newperson.gender.description(),
+    "role": newperson.role.description(),
+    "degree": newperson.degree.description(),
+    "team": newperson.team ?? "1",
+    "hobbies": newperson.hobbies,
+    "languages": newperson.languages,
+    "department": newperson.department,
+    "email": newperson.email,
+    "picture":img_64data
+    ]
+    let jsonData = try? JSONSerialization.data(withJSONObject: newdictionary,options: .fragmentsAllowed)
+    //let jsonString = NSString(data:jsonData! , encoding: String.Encoding.utf8.rawValue)
+    request.httpBody = jsonData
+    _ = URLSession.shared.dataTask(with: request){(data,response,error) in
+        if (error != nil){
+            print("Upload Failure")
+            return
+        }
+        else
+        {
+            if let response = response as? HTTPURLResponse {
+              print("Response HTTP Status code: \(response.statusCode)")
+            }
+    
+            if let data = data, let dataString = String(data: data, encoding: .utf8) {
+                          print("Response data string:\n \(dataString)")
+                    }
+            
+            
+        }
+        
+    }.resume()
+    
 
+}
 
 
 
