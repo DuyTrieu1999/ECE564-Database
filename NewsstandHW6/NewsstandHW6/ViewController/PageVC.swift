@@ -12,6 +12,7 @@ class PageVC: UIPageViewController, UIPageViewControllerDataSource, UIPageViewCo
 
     
     var person: DukePerson?
+    var currNetId: String!
     var addPage: Bool!
     var editTextFieldToggle: Bool!
     var isEditMode: Bool!

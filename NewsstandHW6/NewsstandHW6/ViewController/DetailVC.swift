@@ -179,32 +179,44 @@ class DetailVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, 
     }
     
     /// set button UI
-    private func setButton(){
-        btnCancel.layer.cornerRadius = btnCancel.layer.bounds.height / 2
-        btnCancel.clipsToBounds = true
-        btnCancel.backgroundColor = twitterBlue
-        btnCancel.addTarget(self, action: #selector(toogleCancel), for: .touchUpInside)
-        btnEdit.layer.cornerRadius = btnEdit.layer.bounds.height / 2
-        btnEdit.clipsToBounds = true
-        btnEdit.backgroundColor = twitterBlue
-        btnEdit.addTarget(self, action: #selector(toogleEditor), for: .touchUpInside)
-        btnPost.layer.cornerRadius = btnCancel.layer.bounds.height / 2
-        btnPost.clipsToBounds = true
-        btnPost.backgroundColor = twitterBlue
-        if(isEditMode) {
-            btnEdit.setTitle("Save", for: UIControl.State.normal)
+    func setButton(){
+        if person?.netid == currNetID  || person?.netid == nil {
+             btnCancel.isHidden = false
+             btnEdit.isHidden = false
+             btnPost.isHidden = false
+             cameraImageView.isHidden = false
+             btnCancel.layer.cornerRadius = btnCancel.layer.bounds.height / 2
+             btnCancel.clipsToBounds = true
+             btnCancel.backgroundColor = twitterBlue
+             btnCancel.addTarget(self, action: #selector(toogleCancel), for: .touchUpInside)
+             btnEdit.layer.cornerRadius = btnEdit.layer.bounds.height / 2
+             btnEdit.clipsToBounds = true
+             btnEdit.backgroundColor = twitterBlue
+             btnEdit.addTarget(self, action: #selector(toogleEditor), for: .touchUpInside)
+             btnPost.layer.cornerRadius = btnCancel.layer.bounds.height / 2
+             btnPost.clipsToBounds = true
+             btnPost.backgroundColor = twitterBlue
+             if(isEditMode) {
+                 btnEdit.setTitle("Save", for: UIControl.State.normal)
+             }
+             else{
+                btnEdit.setTitle("Edit", for: UIControl.State.normal)
+             }
+             if isEditMode {
+                 btnPost.isUserInteractionEnabled = false
+             }
+             else {
+                 btnPost.isUserInteractionEnabled = true
+             }
+            // btnPost.addTarget(self, action: #selector(tooglePost), for: .touchUpInside)
+             cameraImageView.tintColor = twitterBlue
         }
         else{
-           btnEdit.setTitle("Edit", for: UIControl.State.normal)
+            btnCancel.isHidden = true
+            btnEdit.isHidden = true
+            btnPost.isHidden = true
+            cameraImageView.isHidden = true
         }
-        if isEditMode {
-            btnPost.isUserInteractionEnabled = false
-        }
-        else {
-            btnPost.isUserInteractionEnabled = true
-        }
-       // btnPost.addTarget(self, action: #selector(tooglePost), for: .touchUpInside)
-        cameraImageView.tintColor = twitterBlue
     }
     /// Post toogler
 //    @objc func tooglePost(sender: UIButton){

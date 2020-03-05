@@ -89,7 +89,7 @@ protocol ECE564 {
     var languages : [String] {get}
     var picture: UIImage {get}  // we will use in future HW
     var team: String? {get} // we will use in future HW
-    var netid: String? {get} // we will use in future HW
+    var netid: String {get} // we will use in future HW
     var email: String {get} // we will use in future HW
     var department: String? {get} // we will use in future HW
     var id: String? {get} // we will use in future HW
@@ -97,7 +97,6 @@ protocol ECE564 {
 
 extension ECE564 {
     var team: String? {return nil}
-    var netid: String? {return nil}
     var department: String? {return nil}
     var id: String? {return nil}
 }
