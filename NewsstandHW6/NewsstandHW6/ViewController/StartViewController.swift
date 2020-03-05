@@ -92,7 +92,9 @@ extension StartViewController: LoginAlertDelegate {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let tableView = storyBoard.instantiateViewController(withIdentifier: "tableView") as! MasterTableVC
         tableView.curNetID = currNetID
-        self.present(tableView, animated: true, completion: nil)
+        navigationController?.pushViewController(tableView,
+               animated: true)
+        //self.present(tableView, animated: true, completion: nil)
     }
 
     func onCancelButtonTapped(_ loginAlertController: LoginAlert) {
