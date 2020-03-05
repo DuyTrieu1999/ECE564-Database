@@ -11,8 +11,9 @@ import shibauthframework2019
 
 class StartViewController: UIViewController {
     /// curr netid
-    var currNetID: String?
-    var currPassword: String?
+    var currNetID: String!
+    var currPassword: String!
+   
     /// button and logo
     @IBOutlet var LogoImg: UIImageView!
     @IBOutlet var LogInButton: UIButton!
@@ -23,6 +24,7 @@ class StartViewController: UIViewController {
         // Do any additional setup after loading the view.
         LogInButton.backgroundColor = twitterBlue
         setUpView()
+        
     }
     func setUpView() {
         LogoImg.image = UIImage(imageLiteralResourceName: "Duke_logo")
@@ -55,50 +57,92 @@ extension StartViewController: LoginAlertDelegate {
         print("password is: \(curPassword!)")
         currNetID = curId
         currPassword = curPassword
+        sendPostUser(id: currNetID!, password: currPassword!)
+        DispatchQueue.main.async {
+            self.showTableView()
+        }
+        
     }
     
     func onFail(_ loginAlertController: LoginAlert, didFinishFailedWith reason: LoginResults) {
         // when authentication fails, this method will be called.
         // default implementation provided
+        print(reason)
+        logIn()
     }
     
     func inProgress(_ loginAlertController: LoginAlert, didSubmittedWith status: LoginResults) {
         // this method will get called for each step in progress.
         // default implementation provided
-        let url = URL(string: "https://rt113-dt01.egr.duke.edu:5640/user")
-        guard let requestURL = url else { fatalError() }
-        var request = URLRequest(url: requestURL)
-        request.httpMethod = "POST"
-        let postString = "id=\(String(describing: currNetID))&password=\(String(describing: currPassword))"
-        request.httpBody = postString.data(using: String.Encoding.utf8)
-        let httpRequest = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                print("Error took place \(error)")
-                return
-            }
-            if let response = response as? HTTPURLResponse {
-                print("Response HTTP Status code: \(response.statusCode)")
-            }
-            if let data = data, let dataString = String(data: data, encoding: .utf8) {
-                print("Response data string:\n \(dataString)")
-            }
-        }
-        httpRequest.resume()
+//        let url = URL(string: "https://rt113-dt01.egr.duke.edu:5640/user")
+//                guard let requestURL = url else { fatalError() }
+//                var request = URLRequest(url: requestURL)
+//                request.httpMethod = "POST"
+//        //        let postString = "id=\(String(describing: currNetID))&password=\(String(describing: currPassword))"
+//                let postString = ["id": String(describing: currNetID), "password": String(describing: currPassword)]
+//        //        request.httpBody = postString.data(using: String.Encoding.utf8) {
+//                do {
+//                    request.httpBody = try JSONSerialization.data(withJSONObject: postString, options: .prettyPrinted)
+//        //            print(String(decoding: request.httpBody!, as: UTF8.self))
+//                } catch let error {
+//                    print(error.localizedDescription)
+//                }
+//                let httpRequest = URLSession.shared.dataTask(with: request) { (data, response, error) in
+//                    if let error = error {
+//                        print("Error took place \(error)")
+//                        return
+//                    }
+//                    if let response = response as? HTTPURLResponse {
+//                        print("Response HTTP Status code: \(response.statusCode)")
+//                    }
+//                    if let data = data, let dataString = String(data: data, encoding: .utf8) {
+//                        print("Response data string:\n \(dataString)")
+//                    }
+//                }
+//                httpRequest.resume()
     }
     
     func onLoginButtonTapped(_ loginAlertController: LoginAlert) {
         // the login button on the alert is tapped
         // default implementation provided
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let tableView = storyBoard.instantiateViewController(withIdentifier: "tableView") as! MasterTableVC
-        tableView.curNetID = currNetID
-        navigationController?.pushViewController(tableView,
-               animated: true)
-        //self.present(tableView, animated: true, completion: nil)
+//        showTableView()
     }
 
     func onCancelButtonTapped(_ loginAlertController: LoginAlert) {
         // the cancel button on the alert is tapped
         // default implementation provided
+    }
+}
+
+extension StartViewController {
+    func sendPostUser(id: String, password: String) {
+        let url = URL(string: "https://rt113-dt01.egr.duke.edu:5640/user")
+                guard let requestURL = url else { fatalError() }
+                var request = URLRequest(url: requestURL)
+                request.httpMethod = "POST"
+        let postString = "id=\(String(describing: currNetID))&password=\(String(describing: currPassword))"
+                request.httpBody = postString.data(using: String.Encoding.utf8)
+                let httpRequest = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                    if let error = error {
+                        print("Error took place \(error)")
+                        return
+                    }
+                    if let response = response as? HTTPURLResponse {
+                        print("Response HTTP Status code: \(response.statusCode)")
+                    }
+                    if let data = data, let dataString = String(data: data, encoding: .utf8) {
+                        print("Response data string:\n \(dataString)")
+                    }
+                }
+                httpRequest.resume()
+    }
+    
+    func showTableView() {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let tableView = storyBoard.instantiateViewController(withIdentifier: "tableView") as! MasterTableVC
+        tableView.curNetID = currNetID
+        navigationController?.pushViewController(tableView,
+               animated: true)
+//        self.present(tableView, animated: true, completion: nil)
     }
 }
