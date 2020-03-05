@@ -222,8 +222,8 @@ func getPersonData(personid:String) -> DukePerson
                                 let hobbies=saveperson["hobbies"] as! [String]
                                 let gender=saveperson["gender"] as! String
                                 let department=saveperson["department"] as!String
+                                
                                 let image64=saveperson["picture"] as! String
-
                                 let dataDecoded:Data=Data(base64Encoded: image64, options:.ignoreUnknownCharacters)!
              
                                 let picture=UIImage(data:dataDecoded as Data)!
@@ -268,7 +268,7 @@ func uploadnewperson(newperson: DukePerson)
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     let imgData:Data = newperson.picture.jpegData(compressionQuality: 0.2)!
     //let imgData:Data = newperson.picture.pngData()!
-    let img_64data:String=imgData.base64EncodedString(options: .lineLength64Characters)
+    let img_64data:String=imgData.base64EncodedString()
     let newdictionary: [String: Any] =
     [
     "id": newperson.id,
