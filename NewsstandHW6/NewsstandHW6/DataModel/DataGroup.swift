@@ -101,6 +101,7 @@ func initializeDukePerson() -> [DukePerson] {
     let dukePersons: [DukePerson] = [myself, professor, TA1, TA2, CongLi, QiruiHe, TrieuDuy]
     return dukePersons
 }
+
 var dukePersons:[DukePerson] = createDukePersons()
 var sections: [GroupSection] = createSections(personArray: dukePersons)
 
