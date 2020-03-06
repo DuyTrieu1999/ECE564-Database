@@ -85,7 +85,6 @@ func createDukePersons() -> [DukePerson]{
     else
     {
         createPerson = downloadServer()
-       // dataEncoder()
     }
     return createPerson
 }
