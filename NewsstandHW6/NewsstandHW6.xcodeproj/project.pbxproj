@@ -24,10 +24,10 @@
 		3F4B024F2404CEB300522447 /* WorldVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4B024D2404CEB300522447 /* WorldVC.swift */; };
 		3FA003712405F622005A902A /* SwimmingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA003702405F621005A902A /* SwimmingVC.swift */; };
 		3FA003732405F629005A902A /* SwimmingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA003722405F628005A902A /* SwimmingView.swift */; };
-		D05F9A842405DA0E00378E6B /* QiruiVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05F9A832405DA0E00378E6B /* QiruiVC.swift */; };
 		C8FAEAF42405E26A00503293 /* shibauthframework2019.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8FAEAE92405DA3F00503293 /* shibauthframework2019.framework */; };
 		C8FAEAF52405E26A00503293 /* shibauthframework2019.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C8FAEAE92405DA3F00503293 /* shibauthframework2019.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C8FAEAFB2405E93B00503293 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FAEAFA2405E93B00503293 /* StartViewController.swift */; };
+		D05F9A842405DA0E00378E6B /* QiruiVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05F9A832405DA0E00378E6B /* QiruiVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -64,9 +64,10 @@
 		3F4B024D2404CEB300522447 /* WorldVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldVC.swift; sourceTree = "<group>"; };
 		3FA003702405F621005A902A /* SwimmingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwimmingVC.swift; sourceTree = "<group>"; };
 		3FA003722405F628005A902A /* SwimmingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwimmingView.swift; sourceTree = "<group>"; };
-		D05F9A832405DA0E00378E6B /* QiruiVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiruiVC.swift; sourceTree = "<group>"; };
+		C8BEF91C24122A130063538A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C8FAEAE92405DA3F00503293 /* shibauthframework2019.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = shibauthframework2019.framework; sourceTree = "<group>"; };
 		C8FAEAFA2405E93B00503293 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		D05F9A832405DA0E00378E6B /* QiruiVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiruiVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +112,7 @@
 				3F4B02292404CC0D00522447 /* Assets.xcassets */,
 				3F4B022B2404CC0D00522447 /* LaunchScreen.storyboard */,
 				3F4B022E2404CC0D00522447 /* Info.plist */,
+				C8BEF91C24122A130063538A /* README.md */,
 			);
 			path = NewsstandHW6;
 			sourceTree = "<group>";
