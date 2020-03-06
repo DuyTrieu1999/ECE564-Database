@@ -73,38 +73,11 @@ extension StartViewController: LoginAlertDelegate {
     func inProgress(_ loginAlertController: LoginAlert, didSubmittedWith status: LoginResults) {
         // this method will get called for each step in progress.
         // default implementation provided
-//        let url = URL(string: "https://rt113-dt01.egr.duke.edu:5640/user")
-//                guard let requestURL = url else { fatalError() }
-//                var request = URLRequest(url: requestURL)
-//                request.httpMethod = "POST"
-//        //        let postString = "id=\(String(describing: currNetID))&password=\(String(describing: currPassword))"
-//                let postString = ["id": String(describing: currNetID), "password": String(describing: currPassword)]
-//        //        request.httpBody = postString.data(using: String.Encoding.utf8) {
-//                do {
-//                    request.httpBody = try JSONSerialization.data(withJSONObject: postString, options: .prettyPrinted)
-//        //            print(String(decoding: request.httpBody!, as: UTF8.self))
-//                } catch let error {
-//                    print(error.localizedDescription)
-//                }
-//                let httpRequest = URLSession.shared.dataTask(with: request) { (data, response, error) in
-//                    if let error = error {
-//                        print("Error took place \(error)")
-//                        return
-//                    }
-//                    if let response = response as? HTTPURLResponse {
-//                        print("Response HTTP Status code: \(response.statusCode)")
-//                    }
-//                    if let data = data, let dataString = String(data: data, encoding: .utf8) {
-//                        print("Response data string:\n \(dataString)")
-//                    }
-//                }
-//                httpRequest.resume()
     }
     
     func onLoginButtonTapped(_ loginAlertController: LoginAlert) {
         // the login button on the alert is tapped
         // default implementation provided
-//        showTableView()
     }
 
     func onCancelButtonTapped(_ loginAlertController: LoginAlert) {
@@ -139,9 +112,9 @@ extension StartViewController {
     func showTableView() {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let tableView = storyBoard.instantiateViewController(withIdentifier: "tableView") as! MasterTableVC
-        //tableView.curNetID = currNetID
+        tableView.id = currNetID
+        tableView.password = currPassword
         navigationController?.pushViewController(tableView,
                animated: true)
-//        self.present(tableView, animated: true, completion: nil)
     }
 }
