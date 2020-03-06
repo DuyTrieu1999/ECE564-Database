@@ -22,6 +22,7 @@ class MasterTableVC: UITableViewController {
     var password: String!
     override func viewDidLoad() {
         super.viewDidLoad()
+        dataEncoder()
         self.tableView.keyboardDismissMode = .onDrag
         setSearchbar()
     }
